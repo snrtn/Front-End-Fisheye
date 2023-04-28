@@ -1,26 +1,12 @@
-import data from "../../data/photographers.json" assert { type: "json" };
+import displayAccueil from "./displayAccueil.js";
+import fetchApp from "../utils/fetchApp.js";
 
-const container = document.querySelector(".photographer_section");
-
-const display = () => {
-  const newFollowers = data.photographers
-    .map((person) => {
-      const { name, city, country, portrait, price, tagline, id } = person;
-      return `
-        <article>
-          <img src="../../assets/images/Photographers ID Photos/${portrait}" alt="${id}"/>
-          <h2>${name}</h2>
-          <h4>${city}, ${country}</h4>
-          <span>${tagline}</span>
-          <span>${price}€/jour</span>
-        </article>
-        `;
-    })
-    .join("");
-  container.innerHTML = newFollowers;
+const init = async () => {
+  const app = await fetchApp();
+  displayAccueil(app);
 };
 
-display();
+window.addEventListener("load", init);
 
 // async function getPhotographers() {
 //   // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
