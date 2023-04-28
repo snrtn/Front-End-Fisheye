@@ -7,7 +7,7 @@ const display = (list) => {
       return `
         <article>
           <a href="/photographer.html?id=${id}">
-            <img src="../../assets/images/Photographers ID Photos/${portrait}" alt="profile photo ${name}"/>
+            <img src="../../assets/images/Photographers/${portrait}" alt="profile photo ${name}"/>
             <h2>${name}</h2>
             <h4>${city}, ${country}</h4>
             <span>${tagline}</span>

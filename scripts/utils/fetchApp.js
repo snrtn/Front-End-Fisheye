@@ -10,4 +10,7 @@ const fetchFollowers = async () => {
   }
 };
 
-export default fetchFollowers;
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+export default fetchFollowers || id;

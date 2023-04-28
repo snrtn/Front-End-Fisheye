@@ -72,4 +72,7 @@ h1 {
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
 }
