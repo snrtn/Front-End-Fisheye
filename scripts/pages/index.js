@@ -1,12 +1,12 @@
-import displayAccueil from "./displayAccueil.js";
-import fetchApp from "../utils/fetchApp.js";
+import fetchDex from "../utils/fetchDex.js";
+import displayDex from "./displayDex.js";
 
-const init = async () => {
-  const app = await fetchApp();
-  displayAccueil(app);
+const initDex = async () => {
+  const data = await fetchDex();
+  displayDex(data);
 };
 
-window.addEventListener("load", init);
+window.addEventListener("load", initDex);
 
 // async function getPhotographers() {
 //   // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,

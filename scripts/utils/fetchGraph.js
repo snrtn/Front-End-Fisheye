@@ -1,13 +1,13 @@
 const url = "/data/photographers.json";
 
-const fetchFollowers = async () => {
+const fetchGraph = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
     return data;
   } catch (error) {
-    alert("Page refresh");
+    return false;
   }
 };
 
-export default fetchFollowers;
+export default fetchGraph;

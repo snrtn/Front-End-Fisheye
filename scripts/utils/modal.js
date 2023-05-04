@@ -1,6 +1,3 @@
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
