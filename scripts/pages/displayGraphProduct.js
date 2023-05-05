@@ -20,17 +20,6 @@ const displayGraphProduct = (list) => {
     }
   }
 
-  window.myFunction = () => {
-    const likeBtn = document.querySelector(".heart-icon");
-    if (!isLiked) {
-      likeBtn.classList.add("isLiked");
-      isLiked = !isLiked;
-    } else {
-      likeBtn.classList.remove("isLiked");
-      isLiked = !isLiked;
-    }
-  };
-
   const item = arrProduct
     .map((person) => {
       const { image, title, likes, video, id } = person;
@@ -47,6 +36,23 @@ const displayGraphProduct = (list) => {
             `;
       }
 
+      window.myFunction = (t) => {
+        const totalLikes = t
+          .closest(".block")
+          .querySelector(".number-of-likes");
+
+        console.log(totalLikes);
+        if (!isLiked) {
+          t.classList.add("isLiked");
+          totalLikes.text(parseInt(totalLikes.text()) + 1);
+          isLiked = !isLiked;
+        } else {
+          t.classList.remove("isLiked");
+          totalLikes.text(parseInt(totalLikes.text()) - 1);
+          isLiked = !isLiked;
+        }
+      };
+
       return `
         <article>
           ${mediaFile}
@@ -56,7 +62,7 @@ const displayGraphProduct = (list) => {
                 <span class="number-of-likes">${likes}</span>
                 <svg
                   class="heart-icon"
-                  onclick="myFunction()"
+                  onclick="myFunction(this)"
                   viewBox="0 0 106 97"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
