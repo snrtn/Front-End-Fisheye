@@ -6,7 +6,6 @@ const displayGraphProduct = (list) => {
   const arrProduct = [];
   const name = [];
   let mediaFile;
-  let isLiked = false;
 
   for (let i = 0; i < list.photographers.length; i++) {
     if (list.photographers[i].id == idParams) {
@@ -41,14 +40,15 @@ const displayGraphProduct = (list) => {
           .closest(".block")
           .querySelector(".number-of-likes");
 
-        console.log(totalLikes);
+        let isLiked = false;
+
         if (!isLiked) {
           t.classList.add("isLiked");
-          totalLikes.text(parseInt(totalLikes.text()) + 1);
+          totalLikes.innerText = parseInt(totalLikes.innerText) + 1;
           isLiked = !isLiked;
         } else {
           t.classList.remove("isLiked");
-          totalLikes.text(parseInt(totalLikes.text()) - 1);
+          totalLikes.innerText = parseInt(totalLikes.innerText) - 1;
           isLiked = !isLiked;
         }
       };
