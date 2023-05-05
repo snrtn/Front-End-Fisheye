@@ -81,15 +81,16 @@
 }
 
 .photograph_product article h2 {
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   color: #901c1c;
   font-weight: 400;
+  text-overflow: ellipsis;
 }
 .photograph_product article span {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: #333;
   font-weight: 400;
-  margin-right: 1rem;
+  margin-right: 0.3rem;
 }
 
 .photograph_product .info div {
@@ -162,4 +163,34 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+.block {
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.block .heart-icon {
+  width: 1.6rem;
+  fill: transparent;
+  transition: transform 0.25s ease-out;
+}
+.block .heart-icon .fill-color-shape {
+  fill: transparent;
+}
+.block .heart-icon.isLiked {
+  filter: drop-shadow(0 1px 3px #c44133);
+}
+.block .heart-icon.isLiked .fill-color-shape {
+  transition: fill 0.5s linear;
+  fill: #e74c3c;
+}
+.block .heart-icon:hover {
+  transform: scale(1.2);
+}
+.block .number-of-likes {
+  font-size: 1.3rem;
+  user-select: none;
+  color: #292d34;
 }
