@@ -15,6 +15,81 @@
     </header>
     <main id="main">
       <div class="photograph_header"></div>
+
+      <div class="photograph_select">
+        <span>Trier par</span>
+        <div class="select-box">
+          <div class="select-box__current" tabindex="0">
+            <div class="select-box__value">
+              <input
+                class="select-box__input"
+                type="radio"
+                id="0"
+                value="1"
+                name="Ben"
+                checked="checked"
+              />
+              <p class="select-box__input-text">Popularité</p>
+            </div>
+            <div class="select-box__value">
+              <input
+                class="select-box__input"
+                type="radio"
+                id="1"
+                value="2"
+                name="Ben"
+              />
+              <p class="select-box__input-text">Date</p>
+            </div>
+            <div class="select-box__value">
+              <input
+                class="select-box__input"
+                type="radio"
+                id="2"
+                value="3"
+                name="Ben"
+              />
+              <p class="select-box__input-text">Titre</p>
+            </div>
+            <img
+              class="select-box__icon"
+              src="/assets/icons/icons8-less-than-100.png"
+              alt="Arrow Icon"
+              aria-hidden="true"
+            />
+          </div>
+          <ul class="select-box__list">
+            <li>
+              <label
+                id="handlePop"
+                class="select-box__option"
+                for="0"
+                aria-hidden="aria-hidden"
+                >Popularité</label
+              >
+            </li>
+            <li>
+              <label
+                id="handleDate"
+                class="select-box__option"
+                for="1"
+                aria-hidden="aria-hidden"
+                >Date</label
+              >
+            </li>
+            <li>
+              <label
+                id="handleAbc"
+                class="select-box__option"
+                for="2"
+                aria-hidden="aria-hidden"
+                >Titre</label
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="photograph_product"></div>
     </main>
 

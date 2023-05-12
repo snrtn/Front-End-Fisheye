@@ -19,29 +19,43 @@ const displayGraphProduct = (list) => {
     }
   }
 
+  document.getElementById("handlePop").addEventListener("click", function () {
+    for (let i = 0; i < arrProduct.length; i++) {
+      console.log(arrProduct[i].likes);
+    }
+  });
+  document.getElementById("handleDate").addEventListener("click", function () {
+    for (let i = 0; i < arrProduct.length; i++) {
+      console.log(arrProduct[i].date);
+    }
+  });
+  document.getElementById("handleAbc").addEventListener("click", function () {
+    for (let i = 0; i < arrProduct.length; i++) {
+      console.log(arrProduct[i].title);
+    }
+  });
+
   const item = arrProduct
     .map((person) => {
       const { image, title, likes, video, id } = person;
 
       if (image) {
         mediaFile = `
-            <img src="../../assets/images/${name}/${image}" alt="${title}" >
+            <img src="../../assets/images/${name}/${image}" alt="${title}" id="${id}}">
             `;
       } else if (video) {
         mediaFile = `
             <video controls>
-              <source src="../../assets/images/${name}/${video}"  type="video/mp4">
+              <source src="../../assets/images/${name}/${video}" id="${id}}" type="video/mp4">
             </video>
             `;
       }
 
       window.myFunction = (t) => {
+        let isLiked = false;
         const totalLikes = t
           .closest(".block")
           .querySelector(".number-of-likes");
-
-        let isLiked = false;
-
         if (!isLiked) {
           t.classList.add("isLiked");
           totalLikes.innerText = parseInt(totalLikes.innerText) + 1;

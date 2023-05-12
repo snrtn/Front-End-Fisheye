@@ -9,8 +9,8 @@
 }
 
 .photograph_header article img {
-  width: 200px;
-  height: 200px;
+  width: 16rem;
+  height: 16rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -22,10 +22,10 @@
 }
 
 .photograph_header article div {
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .photograph_header article h2,
@@ -34,12 +34,12 @@
 }
 
 .photograph_header article h2 {
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   color: #d3573c;
 }
 
 .photograph_header article h4 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #901c1c;
 }
 
@@ -53,7 +53,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10vh;
-  margin: 100px 100px;
+  margin: 50px 100px;
 }
 
 .photograph_product article {
@@ -88,7 +88,7 @@
 }
 .photograph_product article span {
   font-size: 1.3rem;
-  color: #333;
+  color: #000;
   font-weight: 400;
   margin-right: 0.3rem;
 }
@@ -99,16 +99,19 @@
 }
 
 .contact_button {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.8rem;
   color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
+  padding: 15px;
+  width: 18rem;
   border: none;
   background-color: #901c1c;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
+}
+
+.contact_button:hover {
+  background-color: #dc8876;
+  color: #000;
 }
 
 .modal {
@@ -193,4 +196,137 @@ form input {
   font-size: 1.3rem;
   user-select: none;
   color: #292d34;
+}
+.photograph_select {
+  display: flex;
+  margin-right: 100px;
+  align-items: center;
+  justify-content: right;
+}
+.photograph_select span {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+.select-box {
+  margin-top: 2rem;
+  margin-left: 20px;
+  position: relative;
+  display: block;
+  width: 18rem;
+  font-size: 1.8rem;
+  color: #fff;
+}
+.select-box__current {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+.select-box__current:focus + .select-box__list {
+  opacity: 1;
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+.select-box__current:focus + .select-box__list .select-box__option {
+  cursor: pointer;
+}
+.select-box__current:focus .select-box__icon {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+.select-box__icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 20px;
+  transition: 0.2s ease;
+}
+.select-box__value {
+  display: flex;
+}
+.select-box__input {
+  display: none;
+}
+.select-box__input:checked + .select-box__input-text {
+  background-color: #901c1c;
+  display: block;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.select-box__input-text {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  background-color: #fff;
+}
+.select-box__list {
+  position: absolute;
+  margin: 0.6px 0;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  -webkit-animation-name: HideList;
+  animation-name: HideList;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: step-start;
+  animation-timing-function: step-start;
+}
+.select-box__option {
+  display: block;
+  padding: 15px;
+  background-color: #901c1c;
+  border-bottom: 0.6px solid #fff;
+}
+.select-box__list li:last-child label {
+  border-bottom: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.select-box__option:hover,
+.select-box__option:focus {
+  background-color: #dc8876;
+  color: #000;
+}
+@-webkit-keyframes HideList {
+  from {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  to {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+@keyframes HideList {
+  from {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  to {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .photograph_header article {
+    flex-direction: column-reverse;
+  }
+  .photograph_header {
+    height: 100%;
+  }
+  .select-box {
+    margin-left: 15px;
+  }
+  .photograph_select {
+    margin-right: 50px;
+  }
 }

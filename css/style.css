@@ -36,7 +36,7 @@ h1 {
 
 .photographer_section a {
   text-decoration: none;
-  color: #333;
+  color: #000;
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -50,12 +50,12 @@ h1 {
 }
 
 .photographer_section article h2 {
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   color: #d3573c;
 }
 
 .photographer_section article h4 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #901c1c;
 }
 
