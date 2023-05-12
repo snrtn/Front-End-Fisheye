@@ -20,19 +20,24 @@ const displayGraphProduct = (list) => {
   }
 
   document.getElementById("handlePop").addEventListener("click", function () {
-    for (let i = 0; i < arrProduct.length; i++) {
-      console.log(arrProduct[i].likes);
-    }
+    console.log(arrProduct.sort((a, b) => b.likes - a.likes));
   });
+
   document.getElementById("handleDate").addEventListener("click", function () {
-    for (let i = 0; i < arrProduct.length; i++) {
-      console.log(arrProduct[i].date);
-    }
+    console.log(arrProduct.sort((a, b) => new Date(b.date) - new Date(a.date)));
   });
+
   document.getElementById("handleAbc").addEventListener("click", function () {
-    for (let i = 0; i < arrProduct.length; i++) {
-      console.log(arrProduct[i].title);
+    function SortArray(x, y) {
+      if (x.title < y.title) {
+        return -1;
+      }
+      if (x.title > y.title) {
+        return 1;
+      }
+      return 0;
     }
+    console.log(arrProduct.sort(SortArray));
   });
 
   const item = arrProduct
@@ -52,7 +57,7 @@ const displayGraphProduct = (list) => {
       }
 
       window.myFunction = (t) => {
-        let isLiked = false;
+        let isLiked = t.classList.contains("isLiked");
         const totalLikes = t
           .closest(".block")
           .querySelector(".number-of-likes");
