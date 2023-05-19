@@ -1,52 +1,11 @@
-import idParams from "../utils/searchParams.js";
+import displayTrier from "./displayTrier.js";
 
 const container = document.querySelector(".photograph_product");
 
-const displayGraphProduct = (list) => {
-  const arrProduct = [];
-  const name = [];
+const displayGraphProduct = (arrProduct, name) => {
   let mediaFile;
 
-  for (let i = 0; i < list.photographers.length; i++) {
-    if (list.photographers[i].id == idParams) {
-      name.push(list.photographers[i].name);
-    }
-  }
-
-  for (let i = 0; i < list.media.length; i++) {
-    if (list.media[i].photographerId == idParams) {
-      arrProduct.push(list.media[i]);
-    }
-    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
-  }
-
-  document.getElementById("handlePop").addEventListener("click", function () {
-    arrProduct.sort((a, b) => b.likes - a.likes);
-    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
-  });
-
-  document.getElementById("handleDate").addEventListener("click", function () {
-    arrProduct.sort((a, b) => new Date(b.date) - new Date(a.date));
-    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
-  });
-
-  document.getElementById("handleAbc").addEventListener("click", function () {
-    function SortArray(x, y) {
-      if (x.title < y.title) {
-        return -1;
-      }
-      if (x.title > y.title) {
-        return 1;
-      }
-      return 0;
-    }
-    arrProduct.sort(SortArray);
-    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
-  });
-
-  let localData = JSON.parse(localStorage.getItem("DATA_INFOS"));
-
-  const item = localData
+  const item = arrProduct
     .map((person) => {
       const { image, title, likes, video, id } = person;
 
@@ -110,6 +69,8 @@ const displayGraphProduct = (list) => {
     })
     .join("");
   container.innerHTML = item;
+
+  displayTrier(arrProduct, name);
 };
 
 export default displayGraphProduct;
