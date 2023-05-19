@@ -17,14 +17,17 @@ const displayGraphProduct = (list) => {
     if (list.media[i].photographerId == idParams) {
       arrProduct.push(list.media[i]);
     }
+    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
   }
 
   document.getElementById("handlePop").addEventListener("click", function () {
-    console.log(arrProduct.sort((a, b) => b.likes - a.likes));
+    arrProduct.sort((a, b) => b.likes - a.likes);
+    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
   });
 
   document.getElementById("handleDate").addEventListener("click", function () {
-    console.log(arrProduct.sort((a, b) => new Date(b.date) - new Date(a.date)));
+    arrProduct.sort((a, b) => new Date(b.date) - new Date(a.date));
+    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
   });
 
   document.getElementById("handleAbc").addEventListener("click", function () {
@@ -37,10 +40,13 @@ const displayGraphProduct = (list) => {
       }
       return 0;
     }
-    console.log(arrProduct.sort(SortArray));
+    arrProduct.sort(SortArray);
+    localStorage.setItem("DATA_INFOS", JSON.stringify(arrProduct));
   });
 
-  const item = arrProduct
+  let localData = JSON.parse(localStorage.getItem("DATA_INFOS"));
+
+  const item = localData
     .map((person) => {
       const { image, title, likes, video, id } = person;
 
@@ -73,7 +79,7 @@ const displayGraphProduct = (list) => {
       };
 
       return `
-        <article>
+        <article id="refresh">
           ${mediaFile}
           <div class="info">
             <h2>${title}</h2>
