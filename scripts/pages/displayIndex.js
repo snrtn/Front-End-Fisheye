@@ -1,6 +1,6 @@
 const container = document.querySelector(".photographer_section");
 
-const displayDex = (list) => {
+const displayIndex = (list) => {
   const item = list.photographers
     .map((person) => {
       const { name, city, country, portrait, price, tagline, id } = person;
@@ -20,4 +20,4 @@ const displayDex = (list) => {
   container.innerHTML = item;
 };
 
-export default displayDex;
+export default displayIndex;

@@ -1,6 +1,6 @@
 const url = "/data/photographers.json";
 
-const fetchGraph = async () => {
+const fetchApp = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -10,4 +10,4 @@ const fetchGraph = async () => {
   }
 };
 
-export default fetchGraph;
+export default fetchApp;

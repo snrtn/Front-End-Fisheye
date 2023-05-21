@@ -1,4 +1,4 @@
-import displayTrier from "./displayTrier.js";
+import displayGraphTrier from "./displayGraphTrier.js";
 
 const container = document.querySelector(".photograph_product");
 
@@ -9,6 +9,7 @@ const displayGraphProduct = (arrProduct, name) => {
     .map((person) => {
       const { image, title, likes, video, id } = person;
 
+      // TODO: 슬라이드 만들어야함
       if (image) {
         mediaFile = `
             <img src="../../assets/images/${name}/${image}" alt="${title}" id="${id}}">
@@ -70,7 +71,7 @@ const displayGraphProduct = (arrProduct, name) => {
     .join("");
   container.innerHTML = item;
 
-  displayTrier(arrProduct, name);
+  displayGraphTrier(arrProduct, name);
 };
 
 export default displayGraphProduct;

@@ -1,9 +1,9 @@
-import fetchDex from "../utils/fetchDex.js";
-import displayDex from "./displayDex.js";
+import fetchApp from "../utils/fetchApp.js";
+import displayIndex from "./displayIndex.js";
 
 const initDex = async () => {
-  const data = await fetchDex();
-  displayDex(data);
+  const data = await fetchApp();
+  displayIndex(data);
 };
 
 window.addEventListener("load", initDex);

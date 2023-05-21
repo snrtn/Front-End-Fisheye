@@ -1,12 +1,11 @@
 //Mettre le code JavaScript lié à la page photographer.html
-
-import fetchGraph from "../utils/fetchGraph.js";
+import fetchApp from "../utils/fetchApp.js";
+import idParams from "../utils/searchParams.js";
 import displayGraphHead from "./displayGraphHead.js";
 import displayGraphProduct from "./displayGraphProduct.js";
-import idParams from "../utils/searchParams.js";
 
 const initGraph = async () => {
-  const data = await fetchGraph();
+  const data = await fetchApp();
   displayGraphHead(data);
 
   let name = [];
