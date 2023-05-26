@@ -40,7 +40,7 @@ function validateForm(id) {
       userEmail.value !== ""
     ) {
       const data = JSON.stringify(infoClient);
-      window.localStorage.setItem("inscris", data);
+      window.localStorage.setItem("message", data);
       validate.style.display = "none";
       confirmation.style.display = "flex";
     } else {

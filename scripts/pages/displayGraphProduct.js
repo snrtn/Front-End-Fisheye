@@ -1,8 +1,7 @@
 import displayGraphTrier from "./displayGraphTrier.js";
 
 const container = document.querySelector(".photograph_product");
-
-// TODO: modal: par jour text and likes total
+const textLike = document.querySelector(".textLike");
 
 const displayGraphProduct = (arrProduct, name) => {
   let mediaFile;
@@ -11,7 +10,6 @@ const displayGraphProduct = (arrProduct, name) => {
     .map((person) => {
       const { image, title, likes, video, id } = person;
 
-      // TODO: 슬라이드 만들어야함
       if (image) {
         mediaFile = `
             <img src="../../assets/images/${name}/${image}" alt="${title}" id="${id}}">
@@ -32,10 +30,12 @@ const displayGraphProduct = (arrProduct, name) => {
         if (!isLiked) {
           t.classList.add("isLiked");
           totalLikes.innerText = parseInt(totalLikes.innerText) + 1;
+          textLike.innerText = parseInt(textLike.innerText) + 1;
           isLiked = !isLiked;
         } else {
           t.classList.remove("isLiked");
           totalLikes.innerText = parseInt(totalLikes.innerText) - 1;
+          textLike.innerText = parseInt(textLike.innerText) - 1;
           isLiked = !isLiked;
         }
       };

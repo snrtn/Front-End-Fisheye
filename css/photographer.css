@@ -114,6 +114,37 @@ html {
   align-items: center;
 }
 
+.likePrice {
+  position: fixed;
+  top: 100%;
+  right: 5%;
+  transform: translateY(-100%);
+  width: 40rem;
+  height: 7rem;
+  background-color: #dc8876;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.textLike {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #f1f1f7;
+}
+.textPrice {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #f1f1f7;
+}
+
 .contact_button {
   font-size: 1.6rem;
   color: white;
