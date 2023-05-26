@@ -104,20 +104,22 @@
     <!-- slide -->
     <div class="slideContainer">
       <div class="slideWrapper">
-        <h1
-          onclick="closeModalSlide()"
-          class="closeSlideContainer"
-          style="cursor: pointer"
-        >
-          ✕
-        </h1>
-        <article>
-          <img
-            src="https://images.unsplash.com/photo-1684697526198-d1b2c88755fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-            alt=""
-          />
-          <h2 style="color: #1d1d1f; margin: 0; padding: 0">asdasdasdasdsa</h2>
-        </article>
+        <h1 class="slideClose" onclick="closeModalSlide()">✕</h1>
+        <div class="slideContentWrapper">
+          <h2 class="slideTitle">asdasdasdasdsa</h2>
+          <article class="slideImgContainer">
+            <img
+              class="slideImg"
+              src="https://images.unsplash.com/photo-1684523109149-313acd04d8c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2664&q=80"
+              alt=""
+            />
+          </article>
+        </div>
+      </div>
+
+      <div class="slideArrowWrapper">
+        <div class="slideArrow ArrowLeft">⬅️</div>
+        <div class="slideArrow ArrowRight">➡️</div>
       </div>
     </div>
 
