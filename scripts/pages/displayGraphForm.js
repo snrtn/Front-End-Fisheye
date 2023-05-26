@@ -19,6 +19,12 @@ function closeModal() {
   document.body.classList.remove("s_no-scroll");
 }
 
+function closeModalSlide() {
+  const modal = document.querySelector(".slideContainer");
+  modal.style.display = "none";
+  document.body.classList.remove("s_no-scroll");
+}
+
 function validateForm(id) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -37,7 +43,7 @@ function validateForm(id) {
     if (
       userFirstName.value !== "" &&
       userLastName.value !== "" &&
-      userEmail.value !== ""
+      isValidEmail(userEmail.value)
     ) {
       const data = JSON.stringify(infoClient);
       window.localStorage.setItem("message", data);

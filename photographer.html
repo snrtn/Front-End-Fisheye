@@ -101,6 +101,26 @@
       <p class="textPrice"></p>
     </div>
 
+    <!-- slide -->
+    <div class="slideContainer">
+      <div class="slideWrapper">
+        <h1
+          onclick="closeModalSlide()"
+          class="closeSlideContainer"
+          style="cursor: pointer"
+        >
+          ✕
+        </h1>
+        <article>
+          <img
+            src="https://images.unsplash.com/photo-1684697526198-d1b2c88755fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+            alt=""
+          />
+          <h2 style="color: #1d1d1f; margin: 0; padding: 0">asdasdasdasdsa</h2>
+        </article>
+      </div>
+    </div>
+
     <!-- message form -->
     <div id="contact_modal">
       <div class="modalContainer">
@@ -122,19 +142,25 @@
           <form class="validate" id="userForm">
             <div>
               <div class="formData">
-                <label for="prenom">Prénom</label>
+                <label for="prenom"
+                  ><span style="color: #f1f1f7">*</span> Prénom</label
+                >
                 <input type="text" id="prenom" name="prenom" />
                 <p class="error"></p>
               </div>
 
               <div class="formData">
-                <label for="nom">Nom</label>
+                <label for="nom"
+                  ><span style="color: #f1f1f7">*</span> Nom</label
+                >
                 <input type="text" id="nom" name="nom" />
                 <p class="error"></p>
               </div>
 
               <div class="formData">
-                <label for="email">Email</label>
+                <label for="email"
+                  ><span style="color: #f1f1f7">*</span> Email</label
+                >
                 <input type="email" id="email" name="email" />
                 <p class="error"></p>
               </div>

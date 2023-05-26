@@ -2,6 +2,7 @@ import displayGraphTrier from "./displayGraphTrier.js";
 
 const container = document.querySelector(".photograph_product");
 const textLike = document.querySelector(".textLike");
+const slideContainer = document.querySelector(".slideContainer");
 
 const displayGraphProduct = (arrProduct, name) => {
   let mediaFile;
@@ -12,15 +13,21 @@ const displayGraphProduct = (arrProduct, name) => {
 
       if (image) {
         mediaFile = `
-            <img src="../../assets/images/${name}/${image}" alt="${title}" id="${id}}">
+            <img src="../../assets/images/${name}/${image}" alt="${title}" onclick="myContent(${id})">
             `;
       } else if (video) {
         mediaFile = `
-            <video controls>
-              <source src="../../assets/images/${name}/${video}" id="${id}}" type="video/mp4">
+            <video controls onclick="myContent(${id})">
+              <source src="../../assets/images/${name}/${video}" type="video/mp4">
             </video>
             `;
       }
+
+      window.myContent = (id) => {
+        window.scrollTo(0, 0);
+        document.body.classList.add("s_no-scroll");
+        slideContainer.style.display = "block";
+      };
 
       window.myFunction = (t) => {
         let isLiked = t.classList.contains("isLiked");
