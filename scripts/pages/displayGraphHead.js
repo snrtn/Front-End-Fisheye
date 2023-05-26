@@ -1,6 +1,7 @@
 import idParams from "../utils/searchParams.js";
 
 const container = document.querySelector(".photograph_header");
+const persons = document.querySelector(".personName");
 
 const displayGraphHead = (list) => {
   const arrHead = [];
@@ -14,6 +15,7 @@ const displayGraphHead = (list) => {
   const item = arrHead
     .map((person) => {
       const { name, city, country, portrait, tagline, id } = person;
+      persons.innerHTML = name;
       return `
         <article>
           <div>

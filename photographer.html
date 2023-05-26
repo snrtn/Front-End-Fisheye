@@ -98,9 +98,19 @@
       <div class="modalContainer">
         <div class="modal">
           <header>
-            <h2>Contactez-moi</h2>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+              "
+            >
+              <h2 style="margin: 0; padding: 0">Contactez-moi</h2>
+              <h2 style="margin: 0; padding: 0" class="personName"></h2>
+            </div>
             <img src="assets/icons/close.svg" onclick="closeModal()" />
           </header>
+
           <form class="validate" id="userForm">
             <div>
               <div class="formData">
@@ -157,8 +167,7 @@
                   text-align: center;
                 "
               >
-                Merci pour <br />
-                votre inscription
+                Le message a été envoyé avec succès.
               </h2>
             </div>
             <button class="contact_button" type="button" onclick="closeModal()">

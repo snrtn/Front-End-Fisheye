@@ -2,6 +2,8 @@ import displayGraphTrier from "./displayGraphTrier.js";
 
 const container = document.querySelector(".photograph_product");
 
+// TODO: modal: par jour text and likes total
+
 const displayGraphProduct = (arrProduct, name) => {
   let mediaFile;
 

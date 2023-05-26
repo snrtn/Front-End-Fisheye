@@ -6,7 +6,6 @@ import displayGraphProduct from "./displayGraphProduct.js";
 
 const initGraph = async () => {
   const data = await fetchApp();
-  displayGraphHead(data);
 
   let name = [];
   let arrProduct = [];
@@ -23,6 +22,7 @@ const initGraph = async () => {
     }
   }
 
+  displayGraphHead(data);
   displayGraphProduct(arrProduct, name);
 };
 
