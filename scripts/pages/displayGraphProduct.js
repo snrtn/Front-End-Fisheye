@@ -1,54 +1,27 @@
 import displayGraphTrier from "./displayGraphTrier.js";
 
-const container = document.querySelector(".photograph_product");
-const textLike = document.querySelector(".textLike");
-const slideContainer = document.querySelector(".slideContainer");
-
 const displayGraphProduct = (arrProduct, name) => {
+  const container = document.querySelector(".photograph_product");
   let mediaFile;
 
   const item = arrProduct
-    .map((person) => {
-      const { image, title, likes, video, id } = person;
+    .map((person, index) => {
+      const { image, title, likes, video } = person;
 
       if (image) {
         mediaFile = `
-            <img src="../../assets/images/${name}/${image}" alt="${title}" onclick="myContent(${id})">
+              <img src="../../assets/images/${name}/${image}" alt="${title}" onclick="mySlide(this)">
             `;
       } else if (video) {
         mediaFile = `
-            <video controls onclick="myContent(${id})">
-              <source src="../../assets/images/${name}/${video}" type="video/mp4">
-            </video>
+              <video controls onclick="mySlide(this)" id="${title}">
+                <source src="../../assets/images/${name}/${video}"  type="video/mp4">
+              </video>
             `;
       }
 
-      window.myContent = (id) => {
-        window.scrollTo(0, 0);
-        document.body.classList.add("s_no-scroll");
-        slideContainer.style.display = "block";
-      };
-
-      window.myFunction = (t) => {
-        let isLiked = t.classList.contains("isLiked");
-        const totalLikes = t
-          .closest(".block")
-          .querySelector(".number-of-likes");
-        if (!isLiked) {
-          t.classList.add("isLiked");
-          totalLikes.innerText = parseInt(totalLikes.innerText) + 1;
-          textLike.innerText = parseInt(textLike.innerText) + 1;
-          isLiked = !isLiked;
-        } else {
-          t.classList.remove("isLiked");
-          totalLikes.innerText = parseInt(totalLikes.innerText) - 1;
-          textLike.innerText = parseInt(textLike.innerText) - 1;
-          isLiked = !isLiked;
-        }
-      };
-
       return `
-        <article id="refresh">
+        <article id="refresh" data-index="${index}">
           ${mediaFile}
           <div class="info">
             <h2>${title}</h2>
@@ -79,6 +52,61 @@ const displayGraphProduct = (arrProduct, name) => {
     })
     .join("");
   container.innerHTML = item;
+
+  window.myFunction = (t) => {
+    const textLike = document.querySelector(".textLike");
+    const totalLikes = t.closest(".block").querySelector(".number-of-likes");
+    let isLiked = t.classList.contains("isLiked");
+
+    if (!isLiked) {
+      t.classList.add("isLiked");
+      totalLikes.innerText = parseInt(totalLikes.innerText) + 1;
+      textLike.innerText = parseInt(textLike.innerText) + 1;
+      isLiked = !isLiked;
+    } else {
+      t.classList.remove("isLiked");
+      totalLikes.innerText = parseInt(totalLikes.innerText) - 1;
+      textLike.innerText = parseInt(textLike.innerText) - 1;
+      isLiked = !isLiked;
+    }
+  };
+
+  window.mySlide = (element) => {
+    const modalContainer = document.getElementById("myModal");
+    const modal = document.getElementById("media");
+    let span = document.getElementsByClassName("close")[0];
+    let itemImg;
+
+    console.log(element.parentElement.dataset.index);
+    console.log(element);
+
+    if (element.tagName === "IMG") {
+      itemImg = `
+                  <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
+                  <p>${element.alt}</p>
+                  `;
+    } else {
+      itemImg = `
+                  <video controls class="itemImg">
+                  <source src="${element.firstElementChild.src}" type="video/mp4">
+                  </video>
+                  <p>${element.id}</p>
+                `;
+    }
+
+    // add image ou video dans HTML
+    modal.innerHTML = itemImg;
+
+    // open modal
+    modalContainer.style.display = "flex";
+    document.body.classList.add("s_no-scroll");
+
+    // close modal
+    span.onclick = function () {
+      modalContainer.style.display = "none";
+      document.body.classList.remove("s_no-scroll");
+    };
+  };
 
   displayGraphTrier(arrProduct, name);
 };
