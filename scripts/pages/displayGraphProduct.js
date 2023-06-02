@@ -73,24 +73,36 @@ const displayGraphProduct = (arrProduct, name) => {
 
   window.mySlide = (element) => {
     const modalContainer = document.getElementById("myModal");
-    const modal = document.getElementById("media");
-    let span = document.getElementsByClassName("close")[0];
+    const modal = document.querySelector(".modal-content");
+    const arrowLeft = document.querySelector(".arrowLeft");
+    const arrowRight = document.querySelector(".arrowRight");
+    let span = document.querySelector(".close");
     let itemImg;
 
-    console.log(element.parentElement.dataset.index);
-    console.log(element);
+    modal.current = element.parentElement.dataset.index;
+
+    arrowLeft.onclick = function () {
+      console.log("arrowLeft clicked");
+    };
+    arrowRight.onclick = function () {
+      console.log("arrowRight clicked");
+    };
 
     if (element.tagName === "IMG") {
       itemImg = `
-                  <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
-                  <p>${element.alt}</p>
+                  <div id="media" data-current="${modal.current}">
+                    <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
+                    <h2 style="color: #901c1c">${element.alt}</h2>
+                  </div>
                   `;
     } else {
       itemImg = `
-                  <video controls class="itemImg">
-                  <source src="${element.firstElementChild.src}" type="video/mp4">
-                  </video>
-                  <p>${element.id}</p>
+                  <div id="media" data-current="${modal.current}">
+                    <video controls class="itemImg">
+                      <source src="${element.firstElementChild.src}" type="video/mp4">
+                    </video>
+                    <h2 style="color: #901c1c">${element.id}</h2>
+                  </div>
                 `;
     }
 
