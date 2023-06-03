@@ -36,9 +36,9 @@ function validateForm(id) {
 
     if (
       userFirstName.value !== "" &&
-      userFirstName.value.length > 3 &&
+      userFirstName.value.length > 2 &&
       userLastName.value !== "" &&
-      userLastName.value.length > 3 &&
+      userLastName.value.length > 2 &&
       isValidEmail(userEmail.value)
     ) {
       const data = JSON.stringify(infoClient);
@@ -71,9 +71,9 @@ function validateForm(id) {
       setError(userFirstName, "Le prénom est requis.");
     } else if (
       userFirstName.value.length > 0 &&
-      userFirstName.value.length < 3
+      userFirstName.value.length < 2
     ) {
-      setError(userFirstName, "doit au moins contenir 3 caractères");
+      setError(userFirstName, "doit au moins contenir 2 caractères");
     } else if (!isValidName(userFirstNameValue)) {
       setError(
         userFirstName,
@@ -85,8 +85,8 @@ function validateForm(id) {
 
     if (userLastNameValue === "") {
       setError(userLastName, "Le nom est requis");
-    } else if (userLastName.value.length > 0 && userLastName.value.length < 3) {
-      setError(userLastName, "doit au moins contenir 3 caractères");
+    } else if (userLastName.value.length > 0 && userLastName.value.length < 2) {
+      setError(userLastName, "doit au moins contenir 2 caractères");
     } else if (!isValidName(userLastNameValue)) {
       setError(
         userLastName,
