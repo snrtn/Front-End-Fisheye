@@ -1,9 +1,17 @@
 import displayGraphTrier from "./displayGraphTrier.js";
 
-const displayGraphProduct = (arrProduct, name) => {
-  const container = document.querySelector(".photograph_product");
-  let mediaFile;
+const container = document.querySelector(".photograph_product");
+const textLike = document.querySelector(".textLike");
+const modalContainer = document.getElementById("myModal");
+const modal = document.querySelector(".modal-content");
+const arrowLeft = document.querySelector(".arrowLeft");
+const arrowRight = document.querySelector(".arrowRight");
 
+let span = document.querySelector(".close");
+let mediaFile;
+let itemImg;
+
+const displayGraphProduct = (arrProduct, name) => {
   const item = arrProduct
     .map((person, index) => {
       const { image, title, likes, video } = person;
@@ -54,7 +62,6 @@ const displayGraphProduct = (arrProduct, name) => {
   container.innerHTML = item;
 
   window.myFunction = (t) => {
-    const textLike = document.querySelector(".textLike");
     const totalLikes = t.closest(".block").querySelector(".number-of-likes");
     let isLiked = t.classList.contains("isLiked");
 
@@ -72,52 +79,66 @@ const displayGraphProduct = (arrProduct, name) => {
   };
 
   window.mySlide = (element) => {
-    const modalContainer = document.getElementById("myModal");
-    const modal = document.querySelector(".modal-content");
-    const arrowLeft = document.querySelector(".arrowLeft");
-    const arrowRight = document.querySelector(".arrowRight");
-    let span = document.querySelector(".close");
-    let itemImg;
-
     modal.current = element.parentElement.dataset.index;
-
-    arrowLeft.onclick = function () {
-      console.log("arrowLeft clicked");
-    };
-    arrowRight.onclick = function () {
-      console.log("arrowRight clicked");
-    };
 
     if (element.tagName === "IMG") {
       itemImg = `
-                  <div id="media" data-current="${modal.current}">
-                    <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
-                    <h2 style="color: #901c1c">${element.alt}</h2>
-                  </div>
-                  `;
+      <div id="media" data-current="${modal.current}">
+      <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
+      <h2 style="color: #901c1c">${element.alt}</h2>
+      </div>
+      `;
     } else {
       itemImg = `
-                  <div id="media" data-current="${modal.current}">
-                    <video controls class="itemImg">
-                      <source src="${element.firstElementChild.src}" type="video/mp4">
-                    </video>
-                    <h2 style="color: #901c1c">${element.id}</h2>
-                  </div>
-                `;
+      <div id="media" data-current="${modal.current}">
+      <video controls class="itemImg">
+      <source src="${element.firstElementChild.src}" type="video/mp4">
+      </video>
+      <h2 style="color: #901c1c">${element.id}</h2>
+      </div>
+      `;
     }
 
-    // add image ou video dans HTML
     modal.innerHTML = itemImg;
 
     // open modal
     modalContainer.style.display = "flex";
     document.body.classList.add("s_no-scroll");
 
-    // close modal
-    span.onclick = function () {
-      modalContainer.style.display = "none";
-      document.body.classList.remove("s_no-scroll");
+    slideControl(element);
+  };
+
+  // Control slide
+  function slideControl(element) {
+    arrowLeft.onclick = function () {
+      let dataNum = element.parentElement.dataset.index - 1;
+      element = document.querySelector(`[data-index="${dataNum}"]`);
+
+      if (dataNum < 0) {
+        element = document.querySelector(
+          `[data-index="${arrProduct.length - 1}"]`
+        );
+      }
+
+      mySlide(element.firstElementChild);
     };
+
+    arrowRight.onclick = function () {
+      let dataNum = parseInt(element.parentElement.dataset.index) + 1;
+      element = document.querySelector(`[data-index="${dataNum}"]`);
+
+      if (arrProduct.length === dataNum) {
+        element = document.querySelector(`[data-index="0"]`);
+      }
+
+      mySlide(element.firstElementChild);
+    };
+  }
+
+  // close modal
+  span.onclick = function () {
+    modalContainer.style.display = "none";
+    document.body.classList.remove("s_no-scroll");
   };
 
   displayGraphTrier(arrProduct, name);

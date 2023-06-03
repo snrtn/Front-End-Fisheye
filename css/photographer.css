@@ -247,7 +247,7 @@ form input {
   border: 3px solid #ff3860 !important;
 }
 .formData .error {
-  color: #ff3860 !important;
+  color: #fff !important;
   font-size: 1.2rem !important;
   height: 13px !important;
   margin-bottom: 0.5rem !important;

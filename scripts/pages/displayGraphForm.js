@@ -19,12 +19,6 @@ function closeModal() {
   document.body.classList.remove("s_no-scroll");
 }
 
-function closeModalSlide() {
-  const modal = document.querySelector(".slideContainer");
-  modal.style.display = "none";
-  document.body.classList.remove("s_no-scroll");
-}
-
 function validateForm(id) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -42,11 +36,15 @@ function validateForm(id) {
 
     if (
       userFirstName.value !== "" &&
+      userFirstName.value.length > 3 &&
       userLastName.value !== "" &&
+      userLastName.value.length > 3 &&
       isValidEmail(userEmail.value)
     ) {
       const data = JSON.stringify(infoClient);
       window.localStorage.setItem("message", data);
+
+      // pour Success message
       validate.style.display = "none";
       confirmation.style.display = "flex";
     } else {
@@ -70,10 +68,12 @@ function validateForm(id) {
     const userEmailValue = userEmail.value.trim();
 
     if (userFirstNameValue === "") {
-      setError(
-        userFirstName,
-        "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-      );
+      setError(userFirstName, "Le prénom est requis.");
+    } else if (
+      userFirstName.value.length > 0 &&
+      userFirstName.value.length < 3
+    ) {
+      setError(userFirstName, "doit au moins contenir 3 caractères");
     } else if (!isValidName(userFirstNameValue)) {
       setError(
         userFirstName,
@@ -82,11 +82,11 @@ function validateForm(id) {
     } else {
       setSuccess(userFirstName);
     }
+
     if (userLastNameValue === "") {
-      setError(
-        userLastName,
-        "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-      );
+      setError(userLastName, "Le nom est requis");
+    } else if (userLastName.value.length > 0 && userLastName.value.length < 3) {
+      setError(userLastName, "doit au moins contenir 3 caractères");
     } else if (!isValidName(userLastNameValue)) {
       setError(
         userLastName,
@@ -95,6 +95,7 @@ function validateForm(id) {
     } else {
       setSuccess(userLastName);
     }
+
     if (userEmailValue === "") {
       setError(userEmail, "Veuillez entrer votre L'adresse électronique.");
     } else if (!isValidEmail(userEmailValue)) {
