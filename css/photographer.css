@@ -270,7 +270,7 @@ form input {
 .icon {
   margin-left: 1rem;
   color: #e74c3c;
-  filter: drop-shadow(0 1px 3px #c44133);
+  filter: drop-shadow(0 1px 3px #e74c3c);
 }
 .block .heart-icon.isLiked {
   filter: drop-shadow(0 1px 3px #c44133);
@@ -289,9 +289,8 @@ form input {
 }
 .photograph_select {
   display: flex;
-  margin-right: 100px;
+  margin-left: 260px;
   align-items: center;
-  justify-content: right;
 }
 .photograph_select span {
   margin-top: 2rem;
