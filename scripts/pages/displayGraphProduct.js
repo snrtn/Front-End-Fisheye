@@ -84,17 +84,21 @@ const displayGraphProduct = (arrProduct, name) => {
     if (element.tagName === "IMG") {
       itemImg = `
       <div id="media" data-current="${modal.current}">
-      <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
-      <h2 style="color: #901c1c">${element.alt}</h2>
+        <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
+        <div class="media_title">
+          <h1 style="color: #901c1c; font-weight: 400;">${element.alt}</h1>
+        </div> 
       </div>
       `;
     } else {
       itemImg = `
       <div id="media" data-current="${modal.current}">
-      <video controls class="itemImg">
-      <source src="${element.firstElementChild.src}" type="video/mp4">
-      </video>
-      <h2 style="color: #901c1c">${element.id}</h2>
+        <video controls class="itemImg">
+          <source src="${element.firstElementChild.src}" type="video/mp4">
+        </video>
+        <div class="media_title"">
+          <h1 style="color: #901c1c; font-weight: 400;">${element.id}</h1>
+        </div>
       </div>
       `;
     }

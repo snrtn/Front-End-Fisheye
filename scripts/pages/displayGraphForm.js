@@ -75,11 +75,11 @@ function validateForm(id) {
       userFirstName.value.length > 0 &&
       userFirstName.value.length < 3
     ) {
-      setError(userFirstName, "doit au moins contenir 3 caractères");
+      setError(userFirstName, "Doit au moins contenir 3 caractères");
     } else if (!isValidName(userFirstNameValue)) {
       setError(
         userFirstName,
-        "doit être en alphanumérique et/ou le trait d'union"
+        "Doit être en alphanumérique et/ou le trait d'union"
       );
     } else {
       setSuccess(userFirstName);
@@ -88,18 +88,18 @@ function validateForm(id) {
     if (userLastNameValue === "") {
       setError(userLastName, "Le nom est requis");
     } else if (userLastName.value.length > 0 && userLastName.value.length < 3) {
-      setError(userLastName, "doit au moins contenir 3 caractères");
+      setError(userLastName, "Doit au moins contenir 3 caractères");
     } else if (!isValidName(userLastNameValue)) {
       setError(
         userLastName,
-        "doit être en alphanumérique et/ou le trait d'union"
+        "Doit être en alphanumérique et/ou le trait d'union"
       );
     } else {
       setSuccess(userLastName);
     }
 
     if (userEmailValue === "") {
-      setError(userEmail, "Veuillez entrer votre L'adresse électronique.");
+      setError(userEmail, "L'adresse électronique est requis");
     } else if (!isValidEmail(userEmailValue)) {
       setError(userEmail, "Le format n'est pas valide");
     } else {

@@ -78,13 +78,13 @@ html {
 }
 
 .photograph_product img {
-  width: 100%;
+  width: 20vw;
   height: 40vh;
   object-fit: cover;
   border-radius: 1rem;
 }
 .photograph_product video {
-  width: 100%;
+  width: 20vw;
   height: 40vh;
   object-fit: cover;
   border-radius: 1rem;
@@ -119,8 +119,8 @@ html {
   top: 100%;
   right: 5%;
   transform: translateY(-100%);
-  width: 40rem;
-  height: 7rem;
+  width: 30rem;
+  height: 5rem;
   background-color: #dc8876;
   display: flex;
   justify-content: space-evenly;
@@ -266,6 +266,11 @@ form input {
 }
 .block .heart-icon .fill-color-shape {
   fill: transparent;
+}
+.icon {
+  margin-left: 1rem;
+  color: #e74c3c;
+  filter: drop-shadow(0 1px 3px #c44133);
 }
 .block .heart-icon.isLiked {
   filter: drop-shadow(0 1px 3px #c44133);
@@ -425,13 +430,13 @@ form input {
   top: 0%;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: #fff;
   align-items: center;
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fff;
   margin: auto;
   padding: 20px;
   border-radius: 4px;
@@ -439,13 +444,22 @@ form input {
   display: flex;
 }
 
+.media_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 5vw;
+  padding-top: 2vh;
+}
+
 .arrow {
   font-size: 68px;
   display: flex;
   align-items: center;
   padding: 0 100px;
-  color: #fff;
+  color: #901c1c;
   height: 100px;
+  font-weight: 700;
 }
 
 #media {
@@ -462,7 +476,7 @@ form input {
 .close {
   font-size: 110px;
   height: 100px;
-  color: #fff;
+  color: #901c1c;
 }
 
 .arrow:hover,
