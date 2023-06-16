@@ -94,6 +94,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1em 0 0;
 }
 
 .photograph_product article h2 {
@@ -289,7 +290,7 @@ form input {
 }
 .photograph_select {
   display: flex;
-  margin-left: 260px;
+  margin-left: 28.5vh;
   align-items: center;
 }
 .photograph_select span {
@@ -356,7 +357,7 @@ form input {
   width: 100%;
   padding: 0;
   list-style: none;
-  opacity: 0;
+  opacity: 1;
   -webkit-animation-name: HideList;
   animation-name: HideList;
   -webkit-animation-duration: 0.5s;
@@ -367,6 +368,18 @@ form input {
   animation-fill-mode: forwards;
   -webkit-animation-timing-function: step-start;
   animation-timing-function: step-start;
+}
+.heartButton {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
+.content {
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
 }
 .select-box__option {
   display: block;
@@ -436,19 +449,26 @@ form input {
 /* Modal Content */
 .modal-content {
   background-color: #fff;
-  margin: auto;
-  padding: 20px;
-  border-radius: 4px;
-  width: 70%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.buttonClose {
+  background-color: transparent;
+  border: none;
 }
 
 .media_title {
-  width: 100%;
   display: flex;
   justify-content: center;
   padding-left: 5vw;
   padding-top: 2vh;
+}
+.media_title h1 {
+  color: #901c1c;
+  font-weight: 400;
 }
 
 .arrow {
@@ -459,6 +479,8 @@ form input {
   color: #901c1c;
   height: 100px;
   font-weight: 700;
+  border: none;
+  background-color: transparent;
 }
 
 #media {
@@ -476,6 +498,18 @@ form input {
   font-size: 110px;
   height: 100px;
   color: #901c1c;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  left: 90%;
+  top: 0%;
+}
+.arrowLeft {
+  position: absolute;
+}
+.arrowRight {
+  position: absolute;
+  left: 90%;
 }
 
 .arrow:hover,

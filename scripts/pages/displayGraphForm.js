@@ -9,15 +9,55 @@ const confirmation = document.querySelector(".confirmation");
 
 function displayModal(id) {
   document.body.classList.add("s_no-scroll");
+
+  let content = document.querySelectorAll(".content")
+  let heartButton = document.querySelectorAll(".heartButton")
+  let itemPhotos = document.querySelectorAll(".itemPhotos")
+  let hearticon = document.querySelectorAll(".hearticon")
+    
+  for (let i = 0; i < content.length;  i++) {
+    hearticon[i].setAttribute('tabindex', -1);
+    heartButton[i].setAttribute('tabindex', -1);
+    content[i].setAttribute('tabindex', -1);
+    itemPhotos[i].setAttribute('tabindex', -1);
+  }
+
+  
+
   modal.style.display = "block";
   validateForm(id);
 }
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
+
+  let content = document.querySelectorAll(".content")
+  let heartButton = document.querySelectorAll(".heartButton")
+  let itemPhotos = document.querySelectorAll(".itemPhotos")
+  let hearticon = document.querySelectorAll(".hearticon")
+
+  for (let i = 0; i < content.length;  i++) {
+    hearticon[i].tabIndex= 1;
+    heartButton[i].tabIndex= 1;
+    content[i].tabIndex= 1;
+    itemPhotos[i].tabIndex= 1;
+  }
+
+  
   modal.style.display = "none";
   document.body.classList.remove("s_no-scroll");
 }
+
+function keyPress(e) {
+  const modal = document.getElementById("contact_modal");
+
+  if(e.keyCode === 27) {
+    modal.style.display = "none";
+    document.body.classList.remove("s_no-scroll");
+  }
+}
+
+document.addEventListener('keydown', keyPress);
 
 function validateForm(id) {
   form.addEventListener("submit", (e) => {

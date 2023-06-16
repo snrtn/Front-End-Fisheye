@@ -1,9 +1,8 @@
-//Mettre le code JavaScript lié à la page photographer.html
-import fetchApp from "../utils/fetchApp.js";
-import idParams from "../utils/searchParams.js";
+import fetchApp from "./fetchApp.js";
+import idParams from "./searchParams.js";
 
-import displayGraphHead from "./displayGraphHead.js";
-import displayGraphProduct from "./displayGraphProduct.js";
+import displayGraphHead from "../pages/displayGraphHead.js";
+import displayGraphProduct from "../pages/displayGraphProduct.js";
 
 const textPrice = document.querySelector(".textPrice");
 const textLike = document.querySelector(".textLike");

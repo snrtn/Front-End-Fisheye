@@ -22,14 +22,18 @@ const displayGraphHead = (list) => {
       return `
         <article>
           <div>
-            <h2>${name}</h2>
-            <h4>${city}, ${country}</h4>
-            <span>${tagline}</span>
+            <h2 aria-label="Photographer ${name}">${name}</h2>
+            <h4 aria-label="ville ${city}, village ${country}">${city}, ${country}</h4>
+            <span aria-label="présentation ${tagline}">${tagline}</span>
           </div>
-          <button class="contact_button" onclick="displayModal(${id})">
+          <button class="contact_button" onclick="displayModal(${id})" aria-label="bouton ouvrir modal" tabindex="1">
             Contactez-moi
           </button>
-          <img src="../../assets/images/Photographers/${portrait}" alt="profile photo ${name}"/>
+          <img 
+            src="../../assets/images/Photographers/${portrait}"
+            alt="profile photo ${name}"
+            aria-label="profile photo ${name}"
+          />
         </article>
       `;
     })

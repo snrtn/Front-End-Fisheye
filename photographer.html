@@ -5,21 +5,32 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <title>Fisheye - photographe</title>
+    <title>Fisheye | page de detail</title>
   </head>
   <body class="bodyScroll">
     <header>
-      <a href="/index.html"
-        ><img src="assets/images/logo.png" class="logo"
-      /></a>
+      <a
+        href="/index.html"
+        aria-label="ancre page d'accueil"
+        target="_self"
+        tabindex="1"
+      >
+        <img
+          class="logo"
+          src="assets/images/logo.png"
+          aria-label="logo image, type png, logo Fisheye"
+          alt="logo image, type png, logo Fisheye"
+        />
+      </a>
     </header>
+
     <main id="main">
       <div class="photograph_header"></div>
 
       <div class="photograph_select">
         <span>Trier par</span>
         <div class="select-box">
-          <div class="select-box__current" tabindex="0">
+          <div class="select-box__current" tabindex="1">
             <div class="select-box__value">
               <input
                 class="select-box__input"
@@ -58,33 +69,39 @@
               aria-hidden="true"
             />
           </div>
-          <ul class="select-box__list">
+          <ul class="select-box__list" tabindex="0">
             <li>
-              <label
+              <button
                 id="handlePop"
                 class="select-box__option"
                 for="0"
                 aria-hidden="aria-hidden"
-                >Popularité</label
+                tabindex="0"
               >
+                Popularité
+              </button>
             </li>
             <li>
-              <label
+              <button
                 id="handleDate"
                 class="select-box__option"
                 for="1"
                 aria-hidden="aria-hidden"
-                >Date</label
+                tabindex="0"
               >
+                Date
+              </button>
             </li>
             <li>
-              <label
+              <button
                 id="handleAbc"
                 class="select-box__option"
                 for="2"
                 aria-hidden="aria-hidden"
-                >Titre</label
+                tabindex="0"
               >
+                Titre
+              </button>
             </li>
           </ul>
         </div>
@@ -93,22 +110,38 @@
       <div class="photograph_product"></div>
 
       <div id="myModal" class="modalSlide">
-        <div class="arrow arrowLeft">&#65308;</div>
-        <!-- Modal content -->
         <div class="modal-content"></div>
-        <div class="closeContainer">
-          <span class="close">&times;</span>
-        </div>
-        <div class="arrow arrowRight">&#65310;</div>
+
+        <button
+          class="close"
+          aria-label="Fermer la fenêtre modale galerie"
+          tabindex="0"
+        >
+          &times;
+        </button>
+        <button
+          class="arrow arrowLeft"
+          aria-label="Déplacement à gauche"
+          tabindex="0"
+        >
+          &#65308;
+        </button>
+        <button
+          class="arrow arrowRight"
+          aria-label="Déplacement à droite"
+          tabindex="0"
+        >
+          &#65310;
+        </button>
       </div>
     </main>
 
     <div class="likePrice">
       <div style="display: flex">
-        <p class="textLike"></p>
+        <p class="textLike" aria-label="Nombre de cœurs"></p>
         <span class="textLike icon">♥️</span>
       </div>
-      <p class="textPrice"></p>
+      <p class="textPrice" aria-label="prix par jour"></p>
     </div>
 
     <!-- message form -->
@@ -123,24 +156,28 @@
                 align-items: flex-start;
               "
             >
-              <h2 style="margin: 0; padding: 0">Contactez-moi</h2>
+              <h2 style="margin: 0; padding: 0">
+                <legend aria-label="Contactez-moi">Contactez-moi</legend>
+              </h2>
               <h2 style="margin: 0; padding: 0" class="personName"></h2>
             </div>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <button class="buttonClose" onclick="closeModal()">
+              <img src="assets/icons/close.svg" />
+            </button>
           </header>
 
           <form class="validate" id="userForm">
             <div>
               <div class="formData">
-                <label for="prenom"
+                <label for="prenom" aria-label="Saisissez écrier votre Prénom"
                   ><span style="color: #f1f1f7">*</span> Prénom</label
                 >
                 <input type="text" id="prenom" name="prenom" />
-                <p class="error"></p>
+                <p class="error" aria-label=""></p>
               </div>
 
               <div class="formData">
-                <label for="nom"
+                <label for="nom" aria-label="Saisissez écrier votre nom"
                   ><span style="color: #f1f1f7">*</span> Nom</label
                 >
                 <input type="text" id="nom" name="nom" />
@@ -148,14 +185,18 @@
               </div>
 
               <div class="formData">
-                <label for="email"
+                <label for="email" aria-label="Saisissez écrier votre Email"
                   ><span style="color: #f1f1f7">*</span> Email</label
                 >
                 <input type="email" id="email" name="email" />
                 <p class="error"></p>
               </div>
 
-              <label for="message">Votre message</label>
+              <label
+                for="message"
+                aria-label="Saisissez écrier votre Votre message"
+                >Votre message</label
+              >
               <textarea
                 id="message"
                 name="message"
@@ -202,7 +243,13 @@
       </div>
     </div>
 
-    <script type="module" src="/scripts/pages/graph.js"></script>
+    <script type="module" src="/scripts/utils/graph.js"></script>
     <script src="/scripts/pages/displayGraphForm.js"></script>
+
+    <script>
+      function text() {
+        console.log('asdasd');
+      }
+    </script>
   </body>
 </html>

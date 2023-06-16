@@ -1,6 +1,8 @@
 import displayGraphProduct from "./displayGraphProduct.js";
 
 const displayGraphTrier = (arrProducts, name) => {
+
+  
   document.getElementById("handlePop").addEventListener("click", function () {
     arrProducts.sort((a, b) => b.likes - a.likes);
 
