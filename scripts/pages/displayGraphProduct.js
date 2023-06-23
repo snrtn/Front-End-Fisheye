@@ -19,17 +19,14 @@ const displayGraphProduct = (arrProduct, name) => {
 
       if (image) {
         mediaFile = `
-              <div class="content" onkeypress="mySlide(this)" onclick="mySlide(this)" aria-label="bouton ouvrir modal">
-                <img class="itemPhotos" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="1">
-              </div>
+                <img class="itemPhotos" onclick="mySlide(this)" onkeypress="mySlide(this)" aria-label="bouton ouvrir modal" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="1">
+              
             `;
       } else if (video) {
         mediaFile = `
-              <div class="content" onkeypress="mySlide(this)" onclick="mySlide(this)" aria-label="bouton ouvrir modal">
-                <video class="itemPhotos" onclick="mySlide(this)" id="${title}" src="../../assets/images/${name}/${video}" tabindex="1">
-                  <source type="video/mp4">
+                <video class="itemPhotos" id="${title}" tabindex="1" onclick="mySlide(this)" onkeypress="mySlide(this)">
+                  <source src="../../assets/images/${name}/${video}" type="video/mp4">
                 </video>
-              </div>
             `;
       }
 
@@ -43,11 +40,11 @@ const displayGraphProduct = (arrProduct, name) => {
 
                   <button class="heartButton heart-icon" onclick="myFunction(this)">
                     <svg
-                    tabindex="1"
-                    class="hearticon heart-icon"
-                    viewBox="0 0 106 97"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                      class="hearticon heart-icon"
+                      viewBox="0 0 106 97"
+                      fill="none"
+                      tabindex="1"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         class="fill-color-shape"
@@ -87,26 +84,26 @@ const displayGraphProduct = (arrProduct, name) => {
   };
 
   window.mySlide = (element) => {
-    modal.current = element.parentElement.firstElementChild.dataset.index;
 
-    let content = document.querySelectorAll(".content")
+    let hearticon = document.querySelectorAll(".hearticon")
     let heartButton = document.querySelectorAll(".heartButton")
     let itemPhotos = document.querySelectorAll(".itemPhotos")
-    let hearticon = document.querySelectorAll(".hearticon")
-    
-    for (let i = 0; i < content.length;  i++) {
-      hearticon[i].setAttribute('tabindex', -1);
-      heartButton[i].setAttribute('tabindex', -1);
-      content[i].setAttribute('tabindex', -1);
-      itemPhotos[i].setAttribute('tabindex', -1);
+
+    for (let i = 0; i < arrProduct.length;  i++) {
+      hearticon[i].tabIndex= -1;
+      heartButton[i].tabIndex= -1;
+      itemPhotos[i].tabIndex= -1;
     }
-    
-    if (element.firstElementChild.tagName === "IMG") {
+
+    modal.current = element.parentElement.dataset.index;
+
+
+    if (element.tagName === "IMG") {
       itemImg = `
       <div id="media" data-current="${modal.current}">
-        <img src="${element.firstElementChild.src}" alt="${element.firstElementChild.alt}" class="itemImg"/>
+        <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
         <div class="media_title">
-          <h1>${element.firstElementChild.alt}</h1>
+          <h1>${element.alt}</h1>
         </div> 
       </div> 
       `;
@@ -117,7 +114,7 @@ const displayGraphProduct = (arrProduct, name) => {
           <source src="${element.firstElementChild.src}" type="video/mp4">
         </video>
         <div class="media_title"">
-          <h1>${element.firstElementChild.id}</h1>
+          <h1>${element.id}</h1>
         </div>
       </div>
       `;
@@ -132,11 +129,7 @@ const displayGraphProduct = (arrProduct, name) => {
     slideControl(element);
   };
 
-  function mySlide(e){
-    if(e.keyCode === 13){
-        window.mySlide(e)
-    }
-  }
+  
 
   // Control slide
   function slideControl(element) {
@@ -166,38 +159,33 @@ const displayGraphProduct = (arrProduct, name) => {
   }
 
   // close modal
-  span.onclick = function slide() {
-    let content = document.querySelectorAll(".content")
-    let heartButton = document.querySelectorAll(".heartButton")
-
-    for (let i = 0; i < content.length;  i++) {
-      heartButton[i].tabIndex= 1;
-      content[i].tabIndex= 1;
+  span.onclick = function () {
+    let hearticon = document.querySelectorAll(".hearticon")
+    let itemPhotos = document.querySelectorAll(".itemPhotos")
+  
+    for (let i = 0; i < arrProduct.length;  i++) {
+      hearticon[i].tabIndex= 1;
+      itemPhotos[i].tabIndex= 1;
     }
 
     modalContainer.style.display = "none";
     document.body.classList.remove("s_no-scroll");
-
   };
+
+  function keyPress(e) {
+    if(e.keyCode === 27) {
+      window.location.reload()
+    }
+  }
+
+  document.addEventListener('keyup', keyPress);
+
+  
 
   displayGraphTrier(arrProduct, name);
 };
 
-function keyPress(e) {
-  if(e.keyCode === 27) {
-    let content = document.querySelectorAll(".content")
-    let hearticon = document.querySelectorAll(".hearticon")
 
-    for (let i = 0; i < content.length;  i++) {
-      hearticon[i].tabIndex= 1;
-      content[i].tabIndex= 1;
-    }
 
-    modalContainer.style.display = "none";
-    document.body.classList.remove("s_no-scroll");
-  }
-}
-
-document.addEventListener('keydown', keyPress);
 
 export default displayGraphProduct;

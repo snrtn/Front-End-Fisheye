@@ -69,39 +69,39 @@
               aria-hidden="true"
             />
           </div>
-          <ul class="select-box__list" tabindex="0">
+          <ul class="select-box__list">
             <li>
-              <button
+              <label
                 id="handlePop"
                 class="select-box__option"
                 for="0"
                 aria-hidden="aria-hidden"
-                tabindex="0"
+                tabindex="1"
               >
                 Popularité
-              </button>
+              </label>
             </li>
             <li>
-              <button
+              <label
                 id="handleDate"
                 class="select-box__option"
                 for="1"
                 aria-hidden="aria-hidden"
-                tabindex="0"
+                tabindex="1"
               >
                 Date
-              </button>
+              </label>
             </li>
             <li>
-              <button
+              <label
                 id="handleAbc"
                 class="select-box__option"
                 for="2"
                 aria-hidden="aria-hidden"
-                tabindex="0"
+                tabindex="1"
               >
                 Titre
-              </button>
+              </label>
             </li>
           </ul>
         </div>
@@ -115,21 +115,21 @@
         <button
           class="close"
           aria-label="Fermer la fenêtre modale galerie"
-          tabindex="0"
+          tabindex="1"
         >
           &times;
         </button>
         <button
           class="arrow arrowLeft"
           aria-label="Déplacement à gauche"
-          tabindex="0"
+          tabindex="1"
         >
           &#65308;
         </button>
         <button
           class="arrow arrowRight"
           aria-label="Déplacement à droite"
-          tabindex="0"
+          tabindex="1"
         >
           &#65310;
         </button>
@@ -161,7 +161,7 @@
               </h2>
               <h2 style="margin: 0; padding: 0" class="personName"></h2>
             </div>
-            <button class="buttonClose" onclick="closeModal()">
+            <button class="buttonClose" onclick="closeModal()" tabindex="0">
               <img src="assets/icons/close.svg" />
             </button>
           </header>
@@ -172,7 +172,13 @@
                 <label for="prenom" aria-label="Saisissez écrier votre Prénom"
                   ><span style="color: #f1f1f7">*</span> Prénom</label
                 >
-                <input type="text" id="prenom" name="prenom" />
+                <input
+                  type="text"
+                  id="prenom"
+                  name="prenom"
+                  aria-label="Saisissez écrier votre Prénom"
+                  tabindex="0"
+                />
                 <p class="error" aria-label=""></p>
               </div>
 
@@ -180,7 +186,13 @@
                 <label for="nom" aria-label="Saisissez écrier votre nom"
                   ><span style="color: #f1f1f7">*</span> Nom</label
                 >
-                <input type="text" id="nom" name="nom" />
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  aria-label="Saisissez écrier votre nom"
+                  tabindex="0"
+                />
                 <p class="error"></p>
               </div>
 
@@ -188,7 +200,13 @@
                 <label for="email" aria-label="Saisissez écrier votre Email"
                   ><span style="color: #f1f1f7">*</span> Email</label
                 >
-                <input type="email" id="email" name="email" />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  aria-label="Saisissez écrier votre Email"
+                  tabindex="0"
+                />
                 <p class="error"></p>
               </div>
 
@@ -202,6 +220,8 @@
                 name="message"
                 rows="20"
                 style="width: 100%"
+                aria-label="Saisissez écrier votre Votre message"
+                tabindex="0"
               ></textarea>
             </div>
             <button class="contact_button" type="submit">Envoyer</button>
@@ -245,11 +265,5 @@
 
     <script type="module" src="/scripts/utils/graph.js"></script>
     <script src="/scripts/pages/displayGraphForm.js"></script>
-
-    <script>
-      function text() {
-        console.log('asdasd');
-      }
-    </script>
   </body>
 </html>
