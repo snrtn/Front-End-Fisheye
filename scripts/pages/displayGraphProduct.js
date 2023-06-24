@@ -180,8 +180,6 @@ const displayGraphProduct = (arrProduct, name) => {
 
   document.addEventListener('keyup', keyPress);
 
-  
-
   displayGraphTrier(arrProduct, name);
 };
 

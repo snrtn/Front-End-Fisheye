@@ -314,8 +314,8 @@ form input {
 .select-box__current:focus + .select-box__list {
   opacity: 1;
   animation-name: none;
+  z-index: 10;
 }
-
 .select-box__current:focus + .select-box__list .select-box__option {
   cursor: pointer;
 }
@@ -361,9 +361,6 @@ form input {
   animation-fill-mode: forwards;
   animation-timing-function: step-start;
 }
-.select-box__option:focus + .select-box__list {
-  animation-name: HideList;
-}
 .heartButton {
   border: none;
   background-color: transparent;
@@ -382,23 +379,21 @@ form input {
   background-color: #901c1c;
   border-bottom: 0.6px solid #fff;
 }
-.select-box__list li:last-child label {
-  border-bottom: none;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
 .select-box__option:hover {
   background-color: #dc8876;
   color: #000;
 }
+.select-box__list li:last-child button {
+  border-bottom: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
 @keyframes HideList {
   from {
-    -webkit-transform: scaleY(1);
     transform: scaleY(1);
   }
   to {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
+    transform: scaleY(0);
   }
 }
 
