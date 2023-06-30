@@ -160,16 +160,7 @@ const displayGraphProduct = (arrProduct, name) => {
 
   // close modal
   span.onclick = function () {
-    let hearticon = document.querySelectorAll(".hearticon")
-    let itemPhotos = document.querySelectorAll(".itemPhotos")
-  
-    for (let i = 0; i < arrProduct.length;  i++) {
-      hearticon[i].tabIndex= 1;
-      itemPhotos[i].tabIndex= 1;
-    }
-
-    modalContainer.style.display = "none";
-    document.body.classList.remove("s_no-scroll");
+    window.location.reload()
   };
 
   function keyPress(e) {
