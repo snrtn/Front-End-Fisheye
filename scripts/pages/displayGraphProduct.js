@@ -84,7 +84,6 @@ const displayGraphProduct = (arrProduct, name) => {
   };
 
   window.mySlide = (element) => {
-
     let hearticon = document.querySelectorAll(".hearticon")
     let heartButton = document.querySelectorAll(".heartButton")
     let itemPhotos = document.querySelectorAll(".itemPhotos")
@@ -160,7 +159,20 @@ const displayGraphProduct = (arrProduct, name) => {
 
   // close modal
   span.onclick = function () {
-    window.location.reload()
+    let hearticon = document.querySelectorAll(".hearticon")
+    let heartButton = document.querySelectorAll(".heartButton")
+    let itemPhotos = document.querySelectorAll(".itemPhotos")
+
+    for (let i = 0; i < arrProduct.length;  i++) {
+      hearticon[i].tabIndex= 1;
+      heartButton[i].tabIndex= 1;
+      itemPhotos[i].tabIndex= 1;
+    }
+
+    // open modal
+    modalContainer.style.display = "none";
+    document.body.classList.remove("s_no-scroll");
+
   };
 
   function keyPress(e) {

@@ -1,17 +1,13 @@
 import displayGraphProduct from "./displayGraphProduct.js";
 
+
+
 const displayGraphTrier = (arrProducts, name) => {
-  
   document.getElementById("handlePop").addEventListener("click", function () {
-    handlePopSort();
-  });
-
-  function handlePopSort(){
     arrProducts.sort((a, b) => b.likes - a.likes);
-  
     displayGraphProduct(arrProducts, name);
-  };
-
+  });
+  
   document.getElementById("handleDate").addEventListener("click", function () {
     arrProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -32,8 +28,7 @@ const displayGraphTrier = (arrProducts, name) => {
 
     displayGraphProduct(arrProducts, name);
   });
+  
 };
-
-
 
 export default displayGraphTrier;

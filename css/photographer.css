@@ -190,7 +190,16 @@ html {
   cursor: pointer;
   width: 20px;
 }
-
+.selectButton {
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
 .modal header h2 {
   font-size: 2.4rem;
   font-weight: 500;
@@ -290,8 +299,9 @@ form input {
 }
 .photograph_select {
   display: flex;
-  margin-left: 28.5vh;
+  margin: 0 100px;
   align-items: center;
+  z-index: 999999 !important;
 }
 .photograph_select span {
   margin-top: 2rem;
@@ -356,8 +366,8 @@ form input {
   padding: 0;
   list-style: none;
   animation-name: HideList;
-  animation-duration: 0.5s;
-  animation-delay: 0.5s;
+  animation-duration: 3s;
+  animation-delay: 3s;
   animation-fill-mode: forwards;
   animation-timing-function: step-start;
 }
@@ -383,11 +393,13 @@ form input {
   background-color: #dc8876;
   color: #000;
 }
-.select-box__list li:last-child button {
+
+.select-box__list li:last-child .select-box__option {
   border-bottom: none;
-  border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
+
 @keyframes HideList {
   from {
     transform: scaleY(1);
