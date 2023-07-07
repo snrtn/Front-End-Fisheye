@@ -7,37 +7,15 @@ const userMessage = document.getElementById("message");
 const validate = document.querySelector(".validate");
 const confirmation = document.querySelector(".confirmation");
 
-
 function displayModal(id) {
   document.body.classList.add("s_no-scroll");
   modal.style.display = "block";
   validateForm(id);
-
-  let hearticon = document.querySelectorAll(".hearticon")
-  let heartButton = document.querySelectorAll(".heartButton")
-  let itemPhotos = document.querySelectorAll(".itemPhotos")
-
-  for (let i = 0; i < 100;  i++) {
-    hearticon[i].setAttribute("tabindex", -1); 
-    heartButton[i].setAttribute("tabindex", -1); 
-    itemPhotos[i].setAttribute("tabindex", -1); 
-  }
-  
 }
 
 function closeModal() {
   document.body.classList.remove("s_no-scroll");
   modal.style.display = "none";
-
-  let hearticon = document.querySelectorAll(".hearticon")
-  let heartButton = document.querySelectorAll(".heartButton")
-  let itemPhotos = document.querySelectorAll(".itemPhotos")
-
-  for (let i = 0; i < 100;  i++) {
-    hearticon[i].tabIndex= Number.isInteger(-1);
-    heartButton[i].tabIndex= Number.isInteger(-1);
-    itemPhotos[i].tabIndex= Number.isInteger(-1);
-  }
 }
 
 function keyPress(e) {

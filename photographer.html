@@ -77,7 +77,7 @@
                   for="0"
                   aria-hidden="aria-hidden"
                 >
-                  Popularit
+                  Popularité
                 </label>
               </button>
             </li>
@@ -161,7 +161,7 @@
               </h2>
               <h2 style="margin: 0; padding: 0" class="personName"></h2>
             </div>
-            <button class="buttonClose" onclick="closeModal()" tabindex="0">
+            <button class="buttonClose" onclick="closeModal()" tabindex="1">
               <img src="assets/icons/close.svg" />
             </button>
           </header>
@@ -177,7 +177,7 @@
                   id="prenom"
                   name="prenom"
                   aria-label="Saisissez écrier votre Prénom"
-                  tabindex="0"
+                  tabindex="1"
                 />
                 <p class="error" aria-label=""></p>
               </div>
@@ -191,7 +191,7 @@
                   id="nom"
                   name="nom"
                   aria-label="Saisissez écrier votre nom"
-                  tabindex="0"
+                  tabindex="1"
                 />
                 <p class="error"></p>
               </div>
@@ -205,7 +205,7 @@
                   id="email"
                   name="email"
                   aria-label="Saisissez écrier votre Email"
-                  tabindex="0"
+                  tabindex="1"
                 />
                 <p class="error"></p>
               </div>
@@ -221,10 +221,12 @@
                 rows="20"
                 style="width: 100%"
                 aria-label="Saisissez écrier votre Votre message"
-                tabindex="0"
+                tabindex="1"
               ></textarea>
             </div>
-            <button class="contact_button" type="submit">Envoyer</button>
+            <button class="contact_button" type="submit" tabindex="1">
+              Envoyer
+            </button>
           </form>
 
           <div
@@ -264,7 +266,6 @@
     </div>
 
     <script type="module" src="/scripts/utils/graph.js"></script>
-    <script type="module" src="/scripts/pages/displayGraphTrier.js"></script>
     <script src="/scripts/pages/displayGraphForm.js"></script>
   </body>
 </html>

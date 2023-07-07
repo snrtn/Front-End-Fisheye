@@ -19,12 +19,12 @@ const displayGraphProduct = (arrProduct, name) => {
 
       if (image) {
         mediaFile = `
-                <img class="itemPhotos" onclick="mySlide(this)" onkeypress="mySlide(this)" aria-label="bouton ouvrir modal" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="1">
+                <img class="itemPhotos" onclick="mySlide(this)" onkeypress="mySlide(this)" aria-label="bouton ouvrir modal" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="2">
               
             `;
       } else if (video) {
         mediaFile = `
-                <video class="itemPhotos" id="${title}" tabindex="1" onclick="mySlide(this)" onkeypress="mySlide(this)">
+                <video class="itemPhotos" id="${title}" tabindex="2" onclick="mySlide(this)" onkeypress="mySlide(this)">
                   <source src="../../assets/images/${name}/${video}" type="video/mp4">
                 </video>
             `;
@@ -43,7 +43,7 @@ const displayGraphProduct = (arrProduct, name) => {
                       class="hearticon heart-icon"
                       viewBox="0 0 106 97"
                       fill="none"
-                      tabindex="1"
+                      tabindex="2"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -164,9 +164,9 @@ const displayGraphProduct = (arrProduct, name) => {
     let itemPhotos = document.querySelectorAll(".itemPhotos")
 
     for (let i = 0; i < arrProduct.length;  i++) {
-      hearticon[i].tabIndex= 1;
-      heartButton[i].tabIndex= 1;
-      itemPhotos[i].tabIndex= 1;
+      hearticon[i].tabIndex= 2;
+      heartButton[i].tabIndex= 2;
+      itemPhotos[i].tabIndex= 2;
     }
 
     // open modal
