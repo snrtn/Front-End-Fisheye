@@ -1,5 +1,4 @@
 const url = "/data/photographers.json";
-
 const fetchApp = async () => {
   try {
     const response = await fetch(url);
@@ -9,5 +8,4 @@ const fetchApp = async () => {
     return false;
   }
 };
-
 export default fetchApp;

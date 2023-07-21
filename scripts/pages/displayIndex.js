@@ -1,5 +1,5 @@
 const container = document.querySelector(".photographer_section");
-
+// items home page
 const displayIndex = (list) => {
   const item = list.photographers
     .map((person) => {
@@ -25,5 +25,4 @@ const displayIndex = (list) => {
     .join("");
   container.innerHTML = item;
 };
-
 export default displayIndex;

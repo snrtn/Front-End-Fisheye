@@ -8,6 +8,7 @@
     <title>Fisheye | page de detail</title>
   </head>
   <body class="bodyScroll">
+    <!-- logo, nav -->
     <header>
       <a
         href="/index.html"
@@ -23,12 +24,12 @@
         />
       </a>
     </header>
-
     <main id="main">
+      <!-- header: user infos -->
       <div class="photograph_header"></div>
-
+      <!-- Trier par -->
       <div class="photograph_select">
-        <span>Trier par</span>
+        <span aria-label="Trier par">Trier par</span>
         <div class="select-box">
           <div class="select-box__current" tabindex="1">
             <div class="select-box__value">
@@ -76,6 +77,7 @@
                   class="select-box__option"
                   for="0"
                   aria-hidden="aria-hidden"
+                  aria-label="Popularité"
                 >
                   Popularité
                 </label>
@@ -87,6 +89,7 @@
                   class="select-box__option"
                   for="1"
                   aria-hidden="aria-hidden"
+                  aria-label="Date"
                 >
                   Date
                 </label>
@@ -98,6 +101,7 @@
                   class="select-box__option"
                   for="2"
                   aria-hidden="aria-hidden"
+                  aria-label="Titre"
                 >
                   Titre
                 </label>
@@ -106,12 +110,9 @@
           </ul>
         </div>
       </div>
-
       <div class="photograph_product"></div>
-
       <div id="myModal" class="modalSlide">
         <div class="modal-content"></div>
-
         <button
           class="close"
           aria-label="Fermer la fenêtre modale galerie"
@@ -135,15 +136,14 @@
         </button>
       </div>
     </main>
-
+    <!-- like modal, active  -->
     <div class="likePrice">
       <div style="display: flex">
         <p class="textLike" aria-label="Nombre de cœurs"></p>
-        <span class="textLike icon">♥️</span>
+        <span class="textLike icon" aria-label="Like">♥️</span>
       </div>
       <p class="textPrice" aria-label="prix par jour"></p>
     </div>
-
     <!-- message form -->
     <div id="contact_modal">
       <div class="modalContainer">
@@ -165,12 +165,11 @@
               <img src="assets/icons/close.svg" />
             </button>
           </header>
-
           <form class="validate" id="userForm">
             <div>
               <div class="formData">
                 <label for="prenom" aria-label="Saisissez écrier votre Prénom"
-                  ><span style="color: #f1f1f7">*</span> Prénom</label
+                  ><span style="color: #ff0000">*</span> Prénom</label
                 >
                 <input
                   type="text"
@@ -181,10 +180,9 @@
                 />
                 <p class="error" aria-label=""></p>
               </div>
-
               <div class="formData">
                 <label for="nom" aria-label="Saisissez écrier votre nom"
-                  ><span style="color: #f1f1f7">*</span> Nom</label
+                  ><span style="color: #ff0000">*</span> Nom</label
                 >
                 <input
                   type="text"
@@ -195,10 +193,9 @@
                 />
                 <p class="error"></p>
               </div>
-
               <div class="formData">
                 <label for="email" aria-label="Saisissez écrier votre Email"
-                  ><span style="color: #f1f1f7">*</span> Email</label
+                  ><span style="color: #ff0000">*</span> Email</label
                 >
                 <input
                   type="email"
@@ -209,7 +206,6 @@
                 />
                 <p class="error"></p>
               </div>
-
               <label
                 for="message"
                 aria-label="Saisissez écrier votre Votre message"
@@ -224,47 +220,37 @@
                 tabindex="1"
               ></textarea>
             </div>
-            <button class="contact_button" type="submit" tabindex="1">
+            <button
+              class="contact_button"
+              type="submit"
+              tabindex="1"
+              aria-label="Envoyer Button"
+            >
               Envoyer
             </button>
           </form>
-
-          <div
-            class="confirmation"
-            style="
-              display: none;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-            "
-          >
-            <div
-              style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 36rem;
-              "
-            >
+          <div class="confirmation modal_succes_wrapper">
+            <div class="modal_succes_container" style="">
               <h2
-                style="
-                  color: #fff;
-                  font-weight: normal;
-                  font-size: 2rem;
-                  text-align: center;
-                "
+                class="modal_succes"
+                aria-label="Le message a été envoyé avec succès."
               >
                 Le message a été envoyé avec succès.
               </h2>
             </div>
-            <button class="contact_button" type="button" onclick="closeModal()">
+            <button
+              class="contact_button"
+              aria-label="contact button"
+              type="button"
+              onclick="closeModal()"
+            >
               Fermer
             </button>
           </div>
         </div>
       </div>
     </div>
-
+    <!-- js files -->
     <script type="module" src="/scripts/utils/graph.js"></script>
     <script src="/scripts/pages/displayGraphForm.js"></script>
   </body>

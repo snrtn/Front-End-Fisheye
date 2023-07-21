@@ -204,13 +204,31 @@ html {
   font-size: 2.4rem;
   font-weight: 500;
   text-align: center;
-  color: #f1f1f7;
+  color: #181818;
 }
 
 .confirmation {
   display: none;
 }
 
+.modal_succes {
+  color: #fff;
+  font-weight: normal;
+  font-size: 2rem;
+  text-align: center;
+}
+.modal_succes_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36rem;
+}
+.modal_succes_wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 form {
   display: flex;
   width: 100%;
@@ -218,7 +236,7 @@ form {
 }
 
 form label {
-  color: #f1f1f7;
+  color: #181818;
   font-size: 1.6rem;
   font-weight: 400;
 }

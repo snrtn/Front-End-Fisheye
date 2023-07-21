@@ -6,31 +6,28 @@ const userEmail = document.getElementById("email");
 const userMessage = document.getElementById("message");
 const validate = document.querySelector(".validate");
 const confirmation = document.querySelector(".confirmation");
-
+// open modal
 function displayModal(id) {
   document.body.classList.add("s_no-scroll");
   modal.style.display = "block";
   validateForm(id);
 }
-
+// fermer modal
 function closeModal() {
   document.body.classList.remove("s_no-scroll");
   modal.style.display = "none";
 }
-
+// button escape key pour fermer modal
 function keyPress(e) {
   if(e.keyCode === 27) {
     window.location.reload()
   }
 }
-
-
-
+// Form Validation
 function validateForm(id) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     validateInputs();
-
     const infoClient = {
       contact: {
         firstName: userFirstName.value,
@@ -40,7 +37,6 @@ function validateForm(id) {
         userId: id,
       },
     };
-
     if (
       userFirstName.value !== "" &&
       userFirstName.value.length >= 3 &&
@@ -52,7 +48,6 @@ function validateForm(id) {
     ) {
       const data = JSON.stringify(infoClient);
       window.localStorage.setItem("message", data);
-
       // pour Success message
       validate.style.display = "none";
       confirmation.style.display = "flex";
@@ -60,7 +55,7 @@ function validateForm(id) {
       return null;
     }
   });
-
+  // Regular Expressions pour Email et text
   const isValidEmail = (email) => {
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,12 +65,10 @@ function validateForm(id) {
     const re = /^[a-zA-Z]*$/;
     return re.test(String(name).toLowerCase());
   };
-
   const validateInputs = () => {
     const userFirstNameValue = userFirstName.value.trim();
     const userLastNameValue = userLastName.value.trim();
     const userEmailValue = userEmail.value.trim();
-
     if (userFirstNameValue === "") {
       setError(userFirstName, "Le prénom est requis.");
     } else if (
@@ -91,7 +84,6 @@ function validateForm(id) {
     } else {
       setSuccess(userFirstName);
     }
-
     if (userLastNameValue === "") {
       setError(userLastName, "Le nom est requis");
     } else if (userLastName.value.length > 0 && userLastName.value.length < 3) {
@@ -104,7 +96,6 @@ function validateForm(id) {
     } else {
       setSuccess(userLastName);
     }
-
     if (userEmailValue === "") {
       setError(userEmail, "L'adresse électronique est requis");
     } else if (!isValidEmail(userEmailValue)) {
@@ -113,11 +104,9 @@ function validateForm(id) {
       setSuccess(userEmail);
     }
   };
-
   const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector(".error");
-
     errorDisplay.innerText = message;
     inputControl.classList.add("error");
     inputControl.classList.remove("success");
@@ -125,11 +114,9 @@ function validateForm(id) {
   const setSuccess = (element) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector(".error");
-
     errorDisplay.innerText = "";
     inputControl.classList.add("success");
     inputControl.classList.remove("error");
   };
 }
-
 validateForm();
