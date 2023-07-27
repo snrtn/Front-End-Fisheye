@@ -74,8 +74,6 @@ function validateForm(id) {
       console.log(`Prénom : ${INFOCLIENT.contact.firstName} `);
       console.log(`Nom : ${INFOCLIENT.contact.lastName} `);
       console.log(`Email : ${INFOCLIENT.contact.email} `);
-      console.log(`Message : ${INFOCLIENT.contact.message} `);
-      console.log(`UserId : ${INFOCLIENT.contact.userId} `);
 
     } else {
       return null;

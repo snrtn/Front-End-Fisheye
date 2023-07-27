@@ -24,7 +24,6 @@ const displayGraphProduct = (arrProduct, name) => {
       if (image) {
         mediaFile = `
                 <img class="itemPhotos" onclick="mySlide(this)" onkeypress="mySlide(this)" aria-label="bouton ouvrir modal" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="2">
-              
             `;
 
       // rechercher video
@@ -72,7 +71,6 @@ const displayGraphProduct = (arrProduct, name) => {
     .join("");
 
   CONTAINER.innerHTML = ITEM;
-
 
   // like button
   window.myFunction = (event) => {
