@@ -8,8 +8,9 @@ const MODALCONTAINER = document.getElementById("myModal");
 const MODAL = document.querySelector(".modal-content");
 const ARROWLEFT = document.querySelector(".arrowLeft");
 const ARROWRIGHT = document.querySelector(".arrowRight");
+const CLOSE = document.querySelector(".close");
 
-let span = document.querySelector(".close");
+// media content
 let mediaFile;
 let itemImg;
 
@@ -74,12 +75,12 @@ const displayGraphProduct = (arrProduct, name) => {
 
 
   // like button
-  window.myFunction = (envent) => {
-    const TOTALLIKES = envent.closest(".block").querySelector(".number-of-likes");
-    let isLiked = envent.classList.contains("isLiked");
+  window.myFunction = (event) => {
+    const TOTALLIKES = event.closest(".block").querySelector(".number-of-likes");
+    let isLiked = event.classList.contains("isLiked");
 
     if (!isLiked) {
-      envent.classList.add("isLiked");
+      event.classList.add("isLiked");
 
       // count like
       TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) + 1;
@@ -88,7 +89,7 @@ const displayGraphProduct = (arrProduct, name) => {
       isLiked = !isLiked;
 
     } else {
-      envent.classList.remove("isLiked");
+      event.classList.remove("isLiked");
 
       // count like
       TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) - 1;
@@ -112,6 +113,7 @@ const displayGraphProduct = (arrProduct, name) => {
     }
 
     MODAL.current = element.parentElement.dataset.index;
+
     // rechercher image
     if (element.tagName === "IMG") {
       itemImg = `
@@ -174,7 +176,7 @@ const displayGraphProduct = (arrProduct, name) => {
   }
 
   // close modal
-  span.onclick = function () {
+  CLOSE.onclick = function () {
     let hearticon = document.querySelectorAll(".hearticon")
     let heartButton = document.querySelectorAll(".heartButton")
     let itemPhotos = document.querySelectorAll(".itemPhotos")
@@ -192,8 +194,8 @@ const displayGraphProduct = (arrProduct, name) => {
   };
 
   // button escape key pour fermer modal
-  function keyPress(e) {
-    if(e.keyCode === 27) {
+  function keyPress(event) {
+    if(event.keyCode === 27) {
       window.location.reload()
     }
   }

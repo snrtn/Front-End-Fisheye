@@ -1,6 +1,5 @@
 "use strict";
 
-// DOM elements
 const FORM = document.getElementById("userForm");
 const MODAL = document.getElementById("contact_modal");
 const USERFIRSTNAME = document.getElementById("prenom");
@@ -9,6 +8,7 @@ const USEREMAIL = document.getElementById("email");
 const USERMESSAGE = document.getElementById("message");
 const VALIDATE = document.querySelector(".validate");
 const CONFIRMATION = document.querySelector(".confirmation");
+
 
 // open modal
 function displayModal(id) {
@@ -46,15 +46,19 @@ function validateForm(id) {
       },
     };
 
-
     // vérification des valeurs
     if (
+      // prénom
       USERFIRSTNAME.value !== "" &&
       USERFIRSTNAME.value.length >= 3 &&
       isValidName(USERFIRSTNAME.value) &&
+
+      // nom
       USERLASTNAME.value !== "" &&
       USERLASTNAME.value.length >= 3 &&
       isValidName(USERLASTNAME.value) &&
+
+      // email
       isValidEmail(USEREMAIL.value)
 
     ) {
@@ -95,7 +99,7 @@ function validateForm(id) {
 
 
   // Form Validation pour chaque input
-  const validateInputs = () => {
+  function validateInputs() {
     const FIRSTNAMEVAR = USERFIRSTNAME.value.trim();
     const LASTNAMEVAR = USERLASTNAME.value.trim();
     const EMAILVAR = USEREMAIL.value.trim();

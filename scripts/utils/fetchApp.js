@@ -1,13 +1,13 @@
 "use strict";
 
-const url = "/data/photographers.json";
+const URL = "/data/photographers.json";
 
 const fetchApp = async () => {
   try {
-    const response = await fetch(url);
-    const data = await response.json();
+    const RESPONSE = await fetch(URL);
+    const DATA = await RESPONSE.json();
 
-    return data;
+    return DATA;
 
   } catch (error) {
     return false;

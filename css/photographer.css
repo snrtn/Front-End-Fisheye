@@ -68,8 +68,9 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10vh;
-  margin: 50px 100px;
+  gap: 12vh;
+  width: 100%;
+  margin: 50px 0px;
 }
 
 .photograph_product article {
@@ -78,14 +79,14 @@ html {
 }
 
 .photograph_product img {
-  width: 20vw;
-  height: 40vh;
+  width: 25vw;
+  height: 45vh;
   object-fit: cover;
   border-radius: 1rem;
 }
 .photograph_product video {
-  width: 20vw;
-  height: 40vh;
+  width: 25vw;
+  height: 45vh;
   object-fit: cover;
   border-radius: 1rem;
 }
@@ -439,6 +440,18 @@ form input {
   }
   .photograph_select {
     margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .photograph_product {
+    gap: 9vh;
+  }
+}
+
+@media screen and (max-width: 1480px) {
+  .photograph_product {
+    gap: 10vh;
   }
 }
 

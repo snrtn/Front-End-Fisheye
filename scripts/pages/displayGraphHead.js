@@ -21,7 +21,7 @@ const displayGraphHead = (list) => {
   const ITEM = arrHeader
     .map((items) => {
       let { name, city, country, portrait, tagline, id } = items;
-
+      
       // pour title modal contact
       PERSONS.innerHTML = name;
       
