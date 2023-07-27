@@ -1,9 +1,13 @@
-const container = document.querySelector(".photographer_section");
-// items home page
+"use strict";
+
+const CONTAINER = document.querySelector(".photographer_section");
+
+// home page
 const displayIndex = (list) => {
-  const item = list.photographers
-    .map((person) => {
-      const { name, city, country, portrait, price, tagline, id } = person;
+  const ITEM = list.photographers
+    .map((items) => {
+      let { name, city, country, portrait, price, tagline, id } = items;
+      
       return `
         <article class="itemContainer">
           <a href="/photographer.html?id=${id}" aria-label="ancre page detail de ${name}" target="_self">
@@ -23,6 +27,8 @@ const displayIndex = (list) => {
       `;
     })
     .join("");
-  container.innerHTML = item;
+
+  CONTAINER.innerHTML = ITEM;
 };
+
 export default displayIndex;

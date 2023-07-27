@@ -384,8 +384,8 @@ form input {
   padding: 0;
   list-style: none;
   animation-name: HideList;
-  animation-duration: 3s;
-  animation-delay: 3s;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
   animation-timing-function: step-start;
 }

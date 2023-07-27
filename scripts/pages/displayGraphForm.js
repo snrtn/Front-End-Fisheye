@@ -1,122 +1,175 @@
-const form = document.getElementById("userForm");
-const modal = document.getElementById("contact_modal");
-const userFirstName = document.getElementById("prenom");
-const userLastName = document.getElementById("nom");
-const userEmail = document.getElementById("email");
-const userMessage = document.getElementById("message");
-const validate = document.querySelector(".validate");
-const confirmation = document.querySelector(".confirmation");
+"use strict";
+
+// DOM elements
+const FORM = document.getElementById("userForm");
+const MODAL = document.getElementById("contact_modal");
+const USERFIRSTNAME = document.getElementById("prenom");
+const USERLASTNAME = document.getElementById("nom");
+const USEREMAIL = document.getElementById("email");
+const USERMESSAGE = document.getElementById("message");
+const VALIDATE = document.querySelector(".validate");
+const CONFIRMATION = document.querySelector(".confirmation");
+
 // open modal
 function displayModal(id) {
   document.body.classList.add("s_no-scroll");
-  modal.style.display = "block";
+  MODAL.style.display = "block";
   validateForm(id);
 }
+
 // fermer modal
 function closeModal() {
   document.body.classList.remove("s_no-scroll");
-  modal.style.display = "none";
+  MODAL.style.display = "none";
 }
+
 // button escape key pour fermer modal
-function keyPress(e) {
-  if(e.keyCode === 27) {
+function keyPress(event) {
+  if(event.keyCode === 27) {
     window.location.reload()
   }
 }
+
 // Form Validation
 function validateForm(id) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  FORM.addEventListener("submit", (event) => {
+    event.preventDefault();
     validateInputs();
-    const infoClient = {
+
+    const INFOCLIENT = {
       contact: {
-        firstName: userFirstName.value,
-        lastName: userLastName.value,
-        email: userEmail.value,
-        message: userMessage.value,
+        firstName: USERFIRSTNAME.value,
+        lastName: USERLASTNAME.value,
+        email: USEREMAIL.value,
+        message: USERMESSAGE.value,
         userId: id,
       },
     };
+
+
+    // vérification des valeurs
     if (
-      userFirstName.value !== "" &&
-      userFirstName.value.length >= 3 &&
-      isValidName(userFirstName.value) &&
-      userLastName.value !== "" &&
-      userLastName.value.length >= 3 &&
-      isValidName(userLastName.value) &&
-      isValidEmail(userEmail.value)
+      USERFIRSTNAME.value !== "" &&
+      USERFIRSTNAME.value.length >= 3 &&
+      isValidName(USERFIRSTNAME.value) &&
+      USERLASTNAME.value !== "" &&
+      USERLASTNAME.value.length >= 3 &&
+      isValidName(USERLASTNAME.value) &&
+      isValidEmail(USEREMAIL.value)
+
     ) {
-      const data = JSON.stringify(infoClient);
-      window.localStorage.setItem("message", data);
+      // Enregistrer dans localstorage
+      const DATA = JSON.stringify(INFOCLIENT);
+      window.localStorage.setItem("message", DATA);
+
       // pour Success message
-      validate.style.display = "none";
-      confirmation.style.display = "flex";
+      VALIDATE.style.display = "none";
+      CONFIRMATION.style.display = "flex";
+
+      // Vérification des valeurs console.log()
+      console.log(`Prénom : ${INFOCLIENT.contact.firstName} `);
+      console.log(`Nom : ${INFOCLIENT.contact.lastName} `);
+      console.log(`Email : ${INFOCLIENT.contact.email} `);
+      console.log(`Message : ${INFOCLIENT.contact.message} `);
+      console.log(`UserId : ${INFOCLIENT.contact.userId} `);
+
     } else {
       return null;
     }
   });
-  // Regular Expressions pour Email et text
+
+  // Regular Expressions pour Email
   const isValidEmail = (email) => {
-    const re =
+    const RE =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+
+    return RE.test(String(email).toLowerCase());
   };
+
+  // Regular Expressions pour type string: nom et prénom
   const isValidName = (name) => {
-    const re = /^[a-zA-Z]*$/;
-    return re.test(String(name).toLowerCase());
+    const RE = /^[a-zA-Z]*$/;
+
+    return RE.test(String(name).toLowerCase());
   };
+
+
+  // Form Validation pour chaque input
   const validateInputs = () => {
-    const userFirstNameValue = userFirstName.value.trim();
-    const userLastNameValue = userLastName.value.trim();
-    const userEmailValue = userEmail.value.trim();
-    if (userFirstNameValue === "") {
-      setError(userFirstName, "Le prénom est requis.");
+    const FIRSTNAMEVAR = USERFIRSTNAME.value.trim();
+    const LASTNAMEVAR = USERLASTNAME.value.trim();
+    const EMAILVAR = USEREMAIL.value.trim();
+
+    // user prénom
+    if (FIRSTNAMEVAR === "") {
+      setError(USERFIRSTNAME, "Le prénom est requis.");
+
     } else if (
-      userFirstName.value.length > 0 &&
-      userFirstName.value.length < 3
+      USERFIRSTNAME.value.length > 0 &&
+      USERFIRSTNAME.value.length < 3
     ) {
-      setError(userFirstName, "Doit au moins contenir 3 caractères");
-    } else if (!isValidName(userFirstNameValue)) {
+      setError(USERFIRSTNAME, "Doit au moins contenir 3 caractères");
+
+    } else if (!isValidName(FIRSTNAMEVAR)) {
       setError(
-        userFirstName,
+        USERFIRSTNAME,
         "Doit être en alphanumérique et/ou le trait d'union"
       );
+
     } else {
-      setSuccess(userFirstName);
+      setSuccess(USERFIRSTNAME);
     }
-    if (userLastNameValue === "") {
-      setError(userLastName, "Le nom est requis");
-    } else if (userLastName.value.length > 0 && userLastName.value.length < 3) {
-      setError(userLastName, "Doit au moins contenir 3 caractères");
-    } else if (!isValidName(userLastNameValue)) {
+
+    // user nom
+    if (LASTNAMEVAR === "") {
+      setError(USERLASTNAME, "Le nom est requis");
+
+    } else if (USERLASTNAME.value.length > 0 && USERLASTNAME.value.length < 3) {
+      setError(USERLASTNAME, "Doit au moins contenir 3 caractères");
+
+    } else if (!isValidName(LASTNAMEVAR)) {
       setError(
-        userLastName,
+        USERLASTNAME,
         "Doit être en alphanumérique et/ou le trait d'union"
       );
+
     } else {
-      setSuccess(userLastName);
+      setSuccess(USERLASTNAME);
     }
-    if (userEmailValue === "") {
-      setError(userEmail, "L'adresse électronique est requis");
-    } else if (!isValidEmail(userEmailValue)) {
-      setError(userEmail, "Le format n'est pas valide");
+
+    // user email 
+    if (EMAILVAR === "") {
+      setError(USEREMAIL, "L'adresse électronique est requis");
+
+    } else if (!isValidEmail(EMAILVAR)) {
+      setError(USEREMAIL, "Le format n'est pas valide");
+
     } else {
-      setSuccess(userEmail);
+      setSuccess(USEREMAIL);
     }
   };
+
+  // phrase d'erreur
   const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector(".error");
-    errorDisplay.innerText = message;
-    inputControl.classList.add("error");
-    inputControl.classList.remove("success");
+    const INPUTCONTROL = element.parentElement;
+    const ERRDISPLAY = INPUTCONTROL.querySelector(".error");
+
+    ERRDISPLAY.innerText = message;
+
+    INPUTCONTROL.classList.add("error");
+    INPUTCONTROL.classList.remove("success");
   };
+
+  // phrase succès
   const setSuccess = (element) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector(".error");
-    errorDisplay.innerText = "";
-    inputControl.classList.add("success");
-    inputControl.classList.remove("error");
+    const INPUTCONTROL = element.parentElement;
+    const ERRDISPLAY = INPUTCONTROL.querySelector(".error");
+
+    ERRDISPLAY.innerText = "";
+
+    INPUTCONTROL.classList.add("success");
+    INPUTCONTROL.classList.remove("error");
   };
 }
+
 validateForm();

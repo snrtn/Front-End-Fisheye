@@ -1,24 +1,32 @@
+"use strict";
+
 import displayGraphTrier from "./displayGraphTrier.js";
-const container = document.querySelector(".photograph_product");
-const textLike = document.querySelector(".textLike");
-const modalContainer = document.getElementById("myModal");
-const modal = document.querySelector(".modal-content");
-const arrowLeft = document.querySelector(".arrowLeft");
-const arrowRight = document.querySelector(".arrowRight");
+
+const CONTAINER = document.querySelector(".photograph_product");
+const TEXTLIKE = document.querySelector(".textLike");
+const MODALCONTAINER = document.getElementById("myModal");
+const MODAL = document.querySelector(".modal-content");
+const ARROWLEFT = document.querySelector(".arrowLeft");
+const ARROWRIGHT = document.querySelector(".arrowRight");
+
 let span = document.querySelector(".close");
 let mediaFile;
 let itemImg;
+
 // items photographer page
 const displayGraphProduct = (arrProduct, name) => {
-  const item = arrProduct
-    .map((person, index) => {
-      const { image, title, likes, video } = person;
-      // video et image 
+  const ITEM = arrProduct
+    .map((items, index) => {
+      let { image, title, likes, video } = items;
+
+      // rechercher image 
       if (image) {
         mediaFile = `
                 <img class="itemPhotos" onclick="mySlide(this)" onkeypress="mySlide(this)" aria-label="bouton ouvrir modal" src="../../assets/images/${name}/${image}" alt="${title}" tabindex="2">
               
             `;
+
+      // rechercher video
       } else if (video) {
         mediaFile = `
                 <video class="itemPhotos" id="${title}" tabindex="2" onclick="mySlide(this)" onkeypress="mySlide(this)">
@@ -26,6 +34,7 @@ const displayGraphProduct = (arrProduct, name) => {
                 </video>
             `;
       }
+
       return `
         <article id="refresh" data-index="${index}">
           ${mediaFile}
@@ -60,48 +69,64 @@ const displayGraphProduct = (arrProduct, name) => {
       `;
     })
     .join("");
-  container.innerHTML = item;
-  // like button pour image
-  window.myFunction = (t) => {
-    const totalLikes = t.closest(".block").querySelector(".number-of-likes");
-    let isLiked = t.classList.contains("isLiked");
+
+  CONTAINER.innerHTML = ITEM;
+
+
+  // like button
+  window.myFunction = (envent) => {
+    const TOTALLIKES = envent.closest(".block").querySelector(".number-of-likes");
+    let isLiked = envent.classList.contains("isLiked");
 
     if (!isLiked) {
-      t.classList.add("isLiked");
-      totalLikes.innerText = parseInt(totalLikes.innerText) + 1;
-      textLike.innerText = parseInt(textLike.innerText) + 1;
+      envent.classList.add("isLiked");
+
+      // count like
+      TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) + 1;
+      TEXTLIKE.innerText = parseInt(TEXTLIKE.innerText) + 1;      
+
       isLiked = !isLiked;
+
     } else {
-      t.classList.remove("isLiked");
-      totalLikes.innerText = parseInt(totalLikes.innerText) - 1;
-      textLike.innerText = parseInt(textLike.innerText) - 1;
+      envent.classList.remove("isLiked");
+
+      // count like
+      TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) - 1;
+      TEXTLIKE.innerText = parseInt(TEXTLIKE.innerText) - 1;
+
       isLiked = !isLiked;
     }
   };
+
   // image modal
   window.mySlide = (element) => {
     let hearticon = document.querySelectorAll(".hearticon")
     let heartButton = document.querySelectorAll(".heartButton")
     let itemPhotos = document.querySelectorAll(".itemPhotos")
-    // key-control deactivate
+
+    // deactivate key control
     for (let i = 0; i < arrProduct.length;  i++) {
       hearticon[i].tabIndex= -1;
       heartButton[i].tabIndex= -1;
       itemPhotos[i].tabIndex= -1;
     }
-    modal.current = element.parentElement.dataset.index;
+
+    MODAL.current = element.parentElement.dataset.index;
+    // rechercher image
     if (element.tagName === "IMG") {
       itemImg = `
-      <div id="media" data-current="${modal.current}">
+      <div id="media" data-current="${MODAL.current}">
         <img src="${element.src}" alt="${element.alt}" class="itemImg"/>
         <div class="media_title">
           <h1>${element.alt}</h1>
         </div> 
       </div> 
       `;
+
+    // rechercher video
     } else {
       itemImg = `
-      <div id="media" data-current="${modal.current}">
+      <div id="media" data-current="${MODAL.current}">
         <video controls class="itemImg">
           <source src="${element.firstElementChild.src}" type="video/mp4">
         </video>
@@ -111,55 +136,70 @@ const displayGraphProduct = (arrProduct, name) => {
       </div>
       `;
     }
-    modal.innerHTML = itemImg;
+
+    MODAL.innerHTML = itemImg;
+
     // open modal
-    modalContainer.style.display = "flex";
+    MODALCONTAINER.style.display = "flex";
     document.body.classList.add("s_no-scroll");
+
     slideControl(element);
   };
+
   // Control slide
   function slideControl(element) {
-    arrowLeft.onclick = function () {
+    ARROWLEFT.onclick = function () {
       let dataNum = element.parentElement.dataset.index - 1;
       element = document.querySelector(`[data-index="${dataNum}"]`);
+
       if (dataNum < 0) {
         element = document.querySelector(
           `[data-index="${arrProduct.length - 1}"]`
         );
       }
+
       mySlide(element.firstElementChild);
     };
-    arrowRight.onclick = function () {
+
+    ARROWRIGHT.onclick = function () {
       let dataNum = parseInt(element.parentElement.dataset.index) + 1;
       element = document.querySelector(`[data-index="${dataNum}"]`);
+
       if (arrProduct.length === dataNum) {
         element = document.querySelector(`[data-index="0"]`);
       }
+
       mySlide(element.firstElementChild);
     };
   }
+
   // close modal
   span.onclick = function () {
     let hearticon = document.querySelectorAll(".hearticon")
     let heartButton = document.querySelectorAll(".heartButton")
     let itemPhotos = document.querySelectorAll(".itemPhotos")
-    // key-control activate
+
+    // activate key-control 
     for (let i = 0; i < arrProduct.length;  i++) {
       hearticon[i].tabIndex= 2;
       heartButton[i].tabIndex= 2;
       itemPhotos[i].tabIndex= 2;
     }
+
     // open modal
-    modalContainer.style.display = "none";
+    MODALCONTAINER.style.display = "none";
     document.body.classList.remove("s_no-scroll");
   };
+
   // button escape key pour fermer modal
   function keyPress(e) {
     if(e.keyCode === 27) {
       window.location.reload()
     }
   }
+
   document.addEventListener('keyup', keyPress);
   displayGraphTrier(arrProduct, name);
 };
+
 export default displayGraphProduct;
