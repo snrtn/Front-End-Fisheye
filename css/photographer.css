@@ -67,12 +67,9 @@ html {
 .photograph_product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12vh;
-  width: 100%;
-  margin: 50px 0px;
+  justify-content: space-between;
+  margin: 50px 100px;
 }
-
 .photograph_product article {
   display: flex;
   flex-direction: column;
@@ -83,14 +80,15 @@ html {
   height: 45vh;
   object-fit: cover;
   border-radius: 1rem;
+  margin-top: 2rem;
 }
 .photograph_product video {
   width: 25vw;
   height: 45vh;
   object-fit: cover;
   border-radius: 1rem;
+  margin-top: 2rem;
 }
-
 .photograph_product .info {
   display: flex;
   justify-content: space-between;
@@ -443,15 +441,18 @@ form input {
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .photograph_product {
-    gap: 9vh;
-  }
-}
-
 @media screen and (max-width: 1480px) {
-  .photograph_product {
-    gap: 10vh;
+  .photograph_product img {
+    width: 22vw;
+    height: 42vh;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  .photograph_product video {
+    width: 22vw;
+    height: 42vh;
+    object-fit: cover;
+    border-radius: 1rem;
   }
 }
 

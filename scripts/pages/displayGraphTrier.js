@@ -3,6 +3,27 @@
 // appeler js file
 import displayGraphProduct from "./displayGraphProduct.js";
 
+// récupérer des dom
+const CHEVRON = document.querySelector(".select-box__icon");
+
+// Trier par
+CHEVRON.onclick = function () {
+  let isToggle;
+  let isForm;
+
+  if(document.querySelector(".select-box__list").style.display === "none") {
+    isToggle = "block";
+    isForm = "translateY(-50%) rotate(180deg)"
+    
+  } else {
+    isToggle = "none";
+    isForm = "translateY(-50%)"
+  }
+
+  document.querySelector(".select-box__list").style.display = isToggle;
+  document.querySelector(".select-box__icon").style.transform = isForm;
+}
+
 // Trier photographer page 
 const displayGraphTrier = (arrProducts, name) => {
 
