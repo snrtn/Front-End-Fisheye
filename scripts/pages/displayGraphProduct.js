@@ -1,7 +1,9 @@
 "use strict";
 
+// appeler js file
 import displayGraphTrier from "./displayGraphTrier.js";
 
+// récupérer des dom
 const CONTAINER = document.querySelector(".photograph_product");
 const TEXTLIKE = document.querySelector(".textLike");
 const MODALCONTAINER = document.getElementById("myModal");
@@ -16,7 +18,7 @@ let itemImg;
 
 // items photographer page
 const displayGraphProduct = (arrProduct, name) => {
-  const ITEM = arrProduct
+  let item = arrProduct
     .map((items, index) => {
       let { image, title, likes, video } = items;
 
@@ -70,18 +72,18 @@ const displayGraphProduct = (arrProduct, name) => {
     })
     .join("");
 
-  CONTAINER.innerHTML = ITEM;
+  CONTAINER.innerHTML = item;
 
   // like button
   window.myFunction = (event) => {
-    const TOTALLIKES = event.closest(".block").querySelector(".number-of-likes");
+    let totalLike = event.closest(".block").querySelector(".number-of-likes");
     let isLiked = event.classList.contains("isLiked");
 
     if (!isLiked) {
       event.classList.add("isLiked");
 
       // count like
-      TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) + 1;
+      totalLike.innerText = parseInt(totalLike.innerText) + 1;
       TEXTLIKE.innerText = parseInt(TEXTLIKE.innerText) + 1;      
 
       isLiked = !isLiked;
@@ -90,7 +92,7 @@ const displayGraphProduct = (arrProduct, name) => {
       event.classList.remove("isLiked");
 
       // count like
-      TOTALLIKES.innerText = parseInt(TOTALLIKES.innerText) - 1;
+      totalLike.innerText = parseInt(totalLike.innerText) - 1;
       TEXTLIKE.innerText = parseInt(TEXTLIKE.innerText) - 1;
 
       isLiked = !isLiked;

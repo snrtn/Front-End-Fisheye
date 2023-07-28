@@ -1,10 +1,11 @@
 "use strict";
 
+// récupérer des dom
 const CONTAINER = document.querySelector(".photographer_section");
 
 // home page
 const displayIndex = (list) => {
-  const ITEM = list.photographers
+  let item = list.photographers
     .map((items) => {
       let { name, city, country, portrait, price, tagline, id } = items;
       
@@ -28,7 +29,7 @@ const displayIndex = (list) => {
     })
     .join("");
 
-  CONTAINER.innerHTML = ITEM;
+  CONTAINER.innerHTML = item;
 };
 
 export default displayIndex;

@@ -1,7 +1,9 @@
 "use strict";
 
+// appeler js file
 import idParams from "../utils/searchParams.js";
 
+// récupérer des dom
 const CONTAINER = document.querySelector(".photograph_header");
 const PERSONS = document.querySelector(".personName");
 
@@ -18,10 +20,10 @@ const displayGraphHead = (list) => {
     }
   }
 
-  const ITEM = arrHeader
+  let item = arrHeader
     .map((items) => {
       let { name, city, country, portrait, tagline, id } = items;
-      
+
       // pour title modal contact
       PERSONS.innerHTML = name;
       
@@ -45,6 +47,7 @@ const displayGraphHead = (list) => {
     })
     .join("");
 
-    CONTAINER.innerHTML = ITEM;
+    CONTAINER.innerHTML = item;
 };
+
 export default displayGraphHead;

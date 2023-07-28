@@ -1,6 +1,7 @@
 "use strict";
 
-const params = new URLSearchParams(window.location.search);
-let id = params.get("id");
+// appeler URLSearchParams
+const PARAMS = new URLSearchParams(window.location.search);
+let id = PARAMS.get("id");
 
 export default id;

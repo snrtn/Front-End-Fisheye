@@ -1,5 +1,6 @@
 "use strict";
 
+// appeler js file
 import displayGraphProduct from "./displayGraphProduct.js";
 
 // Trier photographer page 
@@ -19,12 +20,12 @@ const displayGraphTrier = (arrProducts, name) => {
 
   // Titre
   document.getElementById("handleAbc").addEventListener("click", function () {
-    function SortArray(x, y) {
-      if (x.title < y.title) {
+    function SortArray(a, b) {
+      if (a.title < b.title) {
         return -1;
       }
 
-      if (x.title > y.title) {
+      if (a.title > b.title) {
         return 1;
       }
 

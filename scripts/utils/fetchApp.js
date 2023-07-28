@@ -1,5 +1,6 @@
 "use strict";
 
+// appeler json file
 const URL = "/data/photographers.json";
 
 const fetchApp = async () => {
@@ -13,4 +14,5 @@ const fetchApp = async () => {
     return false;
   }
 };
+
 export default fetchApp;

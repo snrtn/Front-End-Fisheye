@@ -1,5 +1,6 @@
 "use strict";
 
+// récupérer des dom
 const FORM = document.getElementById("userForm");
 const MODAL = document.getElementById("contact_modal");
 const USERFIRSTNAME = document.getElementById("prenom");
@@ -8,7 +9,6 @@ const USEREMAIL = document.getElementById("email");
 const USERMESSAGE = document.getElementById("message");
 const VALIDATE = document.querySelector(".validate");
 const CONFIRMATION = document.querySelector(".confirmation");
-
 
 // open modal
 function displayModal(id) {
@@ -36,7 +36,8 @@ function validateForm(id) {
     event.preventDefault();
     validateInputs();
 
-    const INFOCLIENT = {
+    // récupérer value input
+    let infoClient = {
       contact: {
         firstName: USERFIRSTNAME.value,
         lastName: USERLASTNAME.value,
@@ -63,7 +64,7 @@ function validateForm(id) {
 
     ) {
       // Enregistrer dans localstorage
-      const DATA = JSON.stringify(INFOCLIENT);
+      const DATA = JSON.stringify(infoClient);
       window.localStorage.setItem("message", DATA);
 
       // pour Success message
@@ -71,9 +72,9 @@ function validateForm(id) {
       CONFIRMATION.style.display = "flex";
 
       // Vérification des valeurs console.log()
-      console.log(`Prénom : ${INFOCLIENT.contact.firstName} `);
-      console.log(`Nom : ${INFOCLIENT.contact.lastName} `);
-      console.log(`Email : ${INFOCLIENT.contact.email} `);
+      console.log(`Prénom : ${infoClient.contact.firstName} `);
+      console.log(`Nom : ${infoClient.contact.lastName} `);
+      console.log(`Email : ${infoClient.contact.email} `);
 
     } else {
       return null;
@@ -84,17 +85,14 @@ function validateForm(id) {
   const isValidEmail = (email) => {
     const RE =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
     return RE.test(String(email).toLowerCase());
   };
 
   // Regular Expressions pour type string: nom et prénom
   const isValidName = (name) => {
     const RE = /^[a-zA-Z]*$/;
-
     return RE.test(String(name).toLowerCase());
   };
-
 
   // Form Validation pour chaque input
   function validateInputs() {
@@ -153,24 +151,28 @@ function validateForm(id) {
 
   // phrase d'erreur
   const setError = (element, message) => {
-    const INPUTCONTROL = element.parentElement;
-    const ERRDISPLAY = INPUTCONTROL.querySelector(".error");
+    let inputControl = element.parentElement;
+    let errDisplay = inputControl.querySelector(".error");
 
-    ERRDISPLAY.innerText = message;
+    // ajouter message
+    errDisplay.innerText = message;
 
-    INPUTCONTROL.classList.add("error");
-    INPUTCONTROL.classList.remove("success");
+    // action style
+    inputControl.classList.add("error");
+    inputControl.classList.remove("success");
   };
 
   // phrase succès
   const setSuccess = (element) => {
-    const INPUTCONTROL = element.parentElement;
-    const ERRDISPLAY = INPUTCONTROL.querySelector(".error");
+    let inputControl = element.parentElement;
+    let errDisplay = inputControl.querySelector(".error");
 
-    ERRDISPLAY.innerText = "";
+    // vide message
+    errDisplay.innerText = "";
 
-    INPUTCONTROL.classList.add("success");
-    INPUTCONTROL.classList.remove("error");
+    // action style
+    inputControl.classList.add("success");
+    inputControl.classList.remove("error");
   };
 }
 
