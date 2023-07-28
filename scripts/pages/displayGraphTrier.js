@@ -5,6 +5,7 @@ import displayGraphProduct from "./displayGraphProduct.js";
 
 // récupérer des dom
 const CHEVRON = document.querySelector(".select-box__icon");
+const SELECTBUTTON = document.querySelector(".selectButton");
 
 // Trier par
 CHEVRON.onclick = function () {
@@ -21,6 +22,17 @@ CHEVRON.onclick = function () {
   }
 
   document.querySelector(".select-box__list").style.display = isToggle;
+  document.querySelector(".select-box__icon").style.transform = isForm;
+}
+SELECTBUTTON.onclick = function () { 
+  let isForm;
+
+  if(document.querySelector(".select-box__icon").style.transform === "translateY(-50%)") {
+    isForm = "translateY(-50%) rotate(180deg)"
+  } else {
+    isForm = "translateY(-50%)"
+  }
+
   document.querySelector(".select-box__icon").style.transform = isForm;
 }
 
